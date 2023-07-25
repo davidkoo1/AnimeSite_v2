@@ -1,0 +1,127 @@
+﻿
+@model IEnumerable<Anime>
+@*
+
+*@
+
+@{
+    double averageAnimeRating(ICollection<Season> seasons)
+    {
+        double avgSum = 0;
+        @foreach (var season in seasons)
+        {
+            //avgTmp = season.Ratings.Sum(x => x.Mark) / season.Ratings.Count();
+            avgSum += season.Ratings.Average(x => x.Mark);
+
+        }
+        return avgSum / seasons.Count();
+    }
+    Anime selectedAnime = null;
+    void SelectAnime(int animeId)
+    {
+        selectedAnime = Model.FirstOrDefault(a => a.Id == animeId);
+    }
+}
+
+<div class="grid">
+    @foreach (var anime in Model)
+    {
+        <div class="content flow">
+            <a @onclick="(e => SelectAnime(anime.Id))" data-toggle="modal" data-target="#animeModal">
+                <img src="@anime.TitleImage" alt="Mimimamomu" title="click me!">
+
+                <p class="title"><strong>@anime.Title</strong></p>
+            </a>
+            <p>@anime.Editor.Name</p>
+            <div class="rating">
+                @if (anime.Seasons.Any())
+                {
+                    int averageRating = (int)averageAnimeRating(anime.Seasons);
+                    for (int i = 1; i <= 5; i++)
+                    {
+                        if (i <= averageRating)
+                        {
+                            <span class="fa fa-star checked"></span>
+                        }
+                        else
+                        {
+                            <span class="fa fa-star"></span>
+                        }
+                    }
+
+                    <span style="margin-left: 3px;">(@averageAnimeRating(anime.Seasons).ToString("0.00"))</span>
+
+                }
+                else
+                {
+                    for (int i = 1; i <= 5; i++)
+                    {
+                        <span class="fa fa-star"></span>
+                    }
+                }
+            </div>
+            <ul>
+
+                @foreach (var genre in anime.AnimeGenres)
+                {
+                    <li>@genre.Genre.Name</li>
+                }
+            </ul>
+
+
+        </div>
+    }
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+@if (selectedAnime != null)
+{
+    <div class="modal fade" id="animeModal" tabindex="-1" role="dialog" aria-labelledby="animeTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div style="width: 100%; max-width: 100%; overflow-wrap: break-word;">
+                        <h5 class="modal-title" id="animeTitle">@selectedAnime.Title</h5>
+                    </div>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <iframe height="300" src="@selectedAnime.VideoGuid"></iframe>
+                        <div class="card-body">
+                            <p class="card-text">@selectedAnime.Description</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    // Добавьте обработчик события при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function () {
+        // Получите ссылки на элементы с классом 'anime-link'
+        var animeLinks = document.querySelectorAll('.anime-link');
+
+        // Добавьте обработчик события 'click' для каждой ссылки
+        animeLinks.forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                e.preventDefault(); // Предотвратите переход по ссылке
+
+                // Получите атрибут 'data-anime-id', который содержит идентификатор аниме
+                var animeId = link.getAttribute('data-anime-id');
+
+                // Вызовите метод SelectAnime с переданным идентификатором аниме
+                SelectAnime(animeId);
+            });
+        });
+    });
+</script>

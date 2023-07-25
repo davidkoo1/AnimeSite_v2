@@ -1,0 +1,269 @@
+.checked {
+    color: orange;
+}
+
+.fa-star {
+    cursor: pointer;
+}
+
+.rating {
+    margin-bottom: 20px;
+}
+
+
+.grid {
+    --gap: 1em;
+    --columns: 3;
+    max-width: 60rem;
+    margin: 0 auto;
+    display: column;
+    columns: var(--columns);
+    gap: var(--gap);
+    column-gap: var(--gap);
+}
+
+    .grid > * {
+        break-inside: avoid;
+        margin-bottom: var(--gap);
+    }
+
+@supports (grid-template-rows: masonry) {
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(var(--columns), 1fr);
+        grid-template-rows: masonry;
+        grid-auto-flow: dense;
+        /*align-tracks: stretch;*/
+    }
+
+        .grid > * {
+            margin-bottom: 0em;
+        }
+}
+
+.featured {
+    grid-column: span 2;
+}
+
+:root {
+    --ff-primary: basic-sans, sans-serif;
+    --clr-primary: #ee6352;
+    --clr-body: #333;
+    --clr-bg: #ddd;
+    --spacer: 1rem;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+h1 {
+    margin: 3rem 0;
+    text-align: center;
+    font-size: clamp(2rem, 1rem + 3vw, 6rem);
+    font-weight: 300;
+    line-height: 1;
+    opacity: 0.2;
+}
+
+.flow > * + * {
+    margin-top: var(--flow-space, var(--spacer));
+}
+
+body {
+    font-family: var(--ff-primary);
+    min-height: 100vh;
+    font-size: 1em;
+    line-height: 1.6;
+    color: var(--clr-body);
+    background: var(--clr-bg);
+    padding-bottom: 13rem;
+}
+
+a {
+    color: var(--clr-primary);
+    text-decoration: none;
+}
+
+img {
+    margin-bottom: 5px;
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.content {
+    padding: 15px;
+    box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s, transform 0.5s ease;
+    background: white;
+    border-radius: 15px;
+    /*
+    box-shadow: 1px 1px 10px rgba(10, 10, 10, 0.8);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    background-color: #fff;
+    transition: background-color 0.3s, transform 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    */
+}
+
+    .content:hover {
+        transform: translateY(-5px);
+        background-color: #f8f8f8;
+    }
+
+    .content:active {
+        transform: translateY(0);
+        background-color: #fff;
+    }
+
+.title {
+    font-weight: 900;
+    color: var(--clr-primary);
+    line-height: 1.2;
+    word-wrap: break-word;
+}
+
+a.navbar-brand {
+    white-space: normal;
+    font-family: 'Yellowtail', cursive;
+    font-size: xx-large;
+    text-align: center;
+    word-break: break-all;
+}
+
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+p {
+    font-family: 'Nunito', sans-serif;
+}
+
+h1 {
+    font-family: 'Nunito', sans-serif;
+}
+
+ul {
+    font-family: 'Nunito', sans-serif;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+    font-family: 'Nunito', sans-serif;
+}
+/*Backgrounds*/
+.bg-navbar {
+    background: -webkit-linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
+    background: -o-linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
+    background: -moz-linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
+    background: linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
+}
+
+.bg-footer {
+    background: -webkit-linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
+    background: -o-linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
+    background: -moz-linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
+    background: linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
+}
+
+
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+.card-columns .card:hover .card-img {
+    opacity: 1;
+}
+
+.card-columns .card-body {
+    height: 100px;
+    font-family: 'Nunito', sans-serif;
+    background: #fbfafd;
+}
+
+.card-columns .card-img {
+    height: 330px;
+    vertical-align: bottom;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    opacity: .8;
+}
+
+.modal .card-img {
+    height: 500px;
+    vertical-align: bottom;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.card-columns .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(37,33,82,.12), 0 4px 8px rgba(37,33,82,.06);
+}
