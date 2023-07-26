@@ -1,5 +1,4 @@
-﻿
-@model IEnumerable<Anime>
+﻿@model IEnumerable<Anime>
 @*
 
 *@
@@ -27,12 +26,26 @@
     @foreach (var anime in Model)
     {
         <div class="content flow">
+            <!--Вот тут проблема, onclick с "собакой" не понимает, для этого нужно Blazor, а если просто без "собаки" то не работает-->
             <a @onclick="(e => SelectAnime(anime.Id))" data-toggle="modal" data-target="#animeModal">
                 <img src="@anime.TitleImage" alt="Mimimamomu" title="click me!">
 
                 <p class="title"><strong>@anime.Title</strong></p>
             </a>
             <p>@anime.Editor.Name</p>
+            <ul>
+                @foreach (var season in anime.Seasons)
+                {
+                    <li>
+                        @season.Name - @season.Date -             
+                        <small class="text-muted">
+                            <a style="color:white; text-decoration:none;" 
+                            asp-area="" asp-controller="Season" asp-action="Detail" asp-route-id="@season.Id">
+                                <button class="btn btn-primary">Go watch!</button></a>
+                        </small>
+                    </li>
+                }
+            </ul>
             <div class="rating">
                 @if (anime.Seasons.Any())
                 {
@@ -70,6 +83,7 @@
 
 
         </div>
+
     }
 </div>
 
@@ -98,30 +112,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-
                 </div>
             </div>
         </div>
     </div>
 }
-
-<script>
-    // Добавьте обработчик события при загрузке страницы
-    document.addEventListener('DOMContentLoaded', function () {
-        // Получите ссылки на элементы с классом 'anime-link'
-        var animeLinks = document.querySelectorAll('.anime-link');
-
-        // Добавьте обработчик события 'click' для каждой ссылки
-        animeLinks.forEach(function (link) {
-            link.addEventListener('click', function (e) {
-                e.preventDefault(); // Предотвратите переход по ссылке
-
-                // Получите атрибут 'data-anime-id', который содержит идентификатор аниме
-                var animeId = link.getAttribute('data-anime-id');
-
-                // Вызовите метод SelectAnime с переданным идентификатором аниме
-                SelectAnime(animeId);
-            });
-        });
-    });
-</script>

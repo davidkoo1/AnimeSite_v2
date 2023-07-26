@@ -1,3 +1,12 @@
+.post {
+    margin-botton: 100px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    padding: 20px;
+    margin: 40px;
+    float: left;
+    margin-top: 5%;
+}
+
 .checked {
     color: orange;
 }
@@ -89,7 +98,7 @@ body {
     padding-bottom: 13rem;
 }
 
-a {
+.t a {
     color: var(--clr-primary);
     text-decoration: none;
 }
@@ -150,6 +159,8 @@ a.navbar-brand {
     background-color: #1b6ec2;
     border-color: #1861ac;
 }
+
+
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #fff;

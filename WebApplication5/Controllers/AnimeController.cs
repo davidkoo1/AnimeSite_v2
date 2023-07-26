@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication5.Data;
+using WebApplication5.Models;
 
 namespace WebApplication5.Controllers
 {
@@ -22,6 +23,11 @@ namespace WebApplication5.Controllers
             return View(animes);
         }
 
-
+        
+        public IActionResult Detail(int id)
+        {
+            Anime anime = _dataContext.Anime.FirstOrDefault(a => a.Id == id);
+            return View(anime);
+        }
     }
 }
