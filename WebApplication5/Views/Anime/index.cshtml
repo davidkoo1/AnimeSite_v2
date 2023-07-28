@@ -7,13 +7,16 @@
     double averageAnimeRating(ICollection<Season> seasons)
     {
         double avgSum = 0;
+        int n = 0;
         @foreach (var season in seasons)
         {
             //avgTmp = season.Ratings.Sum(x => x.Mark) / season.Ratings.Count();
-            avgSum += season.Ratings.Average(x => x.Mark);
-
+            if (season.Ratings.Count > 0)
+                avgSum += season.Ratings.Average(x => x.Mark);
+            else
+                n++;
         }
-        return avgSum / seasons.Count();
+        return avgSum / (seasons.Count()-n);
     }
     Anime selectedAnime = null;
     void SelectAnime(int animeId)
@@ -26,8 +29,8 @@
     @foreach (var anime in Model)
     {
         <div class="content flow">
-            <!--Вот тут проблема, onclick с "собакой" не понимает, для этого нужно Blazor, а если просто без "собаки" то не работает-->
-            <a @onclick="(e => SelectAnime(anime.Id))" data-toggle="modal" data-target="#animeModal">
+            
+            <a onclick="openModal({url: '/Anime/GetAnime', data: '@anime.Id'})" data-toggle="ajax-modal" data-trigger="Modal">
                 <img src="@anime.TitleImage" alt="Mimimamomu" title="click me!">
 
                 <p class="title"><strong>@anime.Title</strong></p>
@@ -89,31 +92,4 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-@if (selectedAnime != null)
-{
-    <div class="modal fade" id="animeModal" tabindex="-1" role="dialog" aria-labelledby="animeTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div style="width: 100%; max-width: 100%; overflow-wrap: break-word;">
-                        <h5 class="modal-title" id="animeTitle">@selectedAnime.Title</h5>
-                    </div>
 
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="card">
-                        <iframe height="300" src="@selectedAnime.VideoGuid"></iframe>
-                        <div class="card-body">
-                            <p class="card-text">@selectedAnime.Description</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                </div>
-            </div>
-        </div>
-    </div>
-}

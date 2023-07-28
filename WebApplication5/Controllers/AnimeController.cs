@@ -23,11 +23,16 @@ namespace WebApplication5.Controllers
             return View(animes);
         }
 
-        
-        public IActionResult Detail(int id)
+        [HttpGet]
+        public IActionResult GetAnime(int id, bool isJson)
         {
-            Anime anime = _dataContext.Anime.FirstOrDefault(a => a.Id == id);
-            return View(anime);
+            var response = _dataContext.Anime.Include(s => s.Seasons).FirstOrDefault(x => x.Id == id);
+            if(isJson)
+            {
+                return Json(response);
+            }
+
+            return PartialView("GetAnime", response);
         }
     }
 }
