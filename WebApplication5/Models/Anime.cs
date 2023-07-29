@@ -10,7 +10,7 @@ namespace WebApplication5.Models
         public string Title { get; set; }
         public string? Description { get; set; }
         public string TitleImage { get; set; }
-        public string VideoGuid { get; set; }
+        public string VideoGuid { get; set; } //Мб вообще стоит удалить
 
         [ForeignKey("Editor")]
         public int EditorId { get; set; }

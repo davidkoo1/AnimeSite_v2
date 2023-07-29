@@ -34,4 +34,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Anime}/{action=Index}/{id?}");
 
+
 app.Run();

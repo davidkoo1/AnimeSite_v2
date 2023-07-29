@@ -13,8 +13,9 @@ namespace WebApplication5.Controllers
             _dataContext = dataContext;
         }
 
-
-        public IActionResult Detail(int id)
+        [HttpGet("/Season-{Id}")]
+        [ProducesResponseType(200, Type = typeof(Season))]
+        public IActionResult Season(string name, int id)
         {
             Season season = _dataContext.Seasons.Include(a => a.Anime).ThenInclude(g => g.AnimeGenres).ThenInclude(g => g.Genre)
                 .Include(e => e.Episodes)

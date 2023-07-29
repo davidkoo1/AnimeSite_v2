@@ -1,0 +1,73 @@
+﻿<!--model Anime
+
+<h1>@Model.Title</h1>
+<p>@Model.Description</p>
+
+<h2>Seasons</h2>
+<ul>
+    foreach (var season in Model.Seasons)
+    {
+        <li>
+            <div id="season.Name">
+                <a href="Url.Action("Season", "Anime", new { animeName = Model.Title, seasonId = season.Id })">season.Name</a>
+            </div>
+
+        </li>
+    }
+</ul>
+-->
+
+<!--Общая страница с сезонами и переход в нужную секцию-->
+@model Anime
+
+<h1>@Model.Title</h1>
+<p>@Model.Description</p>
+
+<h2>Seasons</h2>
+<ul>
+    
+    @foreach (var season in Model.Seasons)
+    {
+
+        <li id="@season.Name">
+            <a href="@Url.Action("Season", "Anime", new { animeName = Model.Title, seasonId = season.Id })">@season.Name
+            <img src="@season.TitleImage"/></a>
+
+            <ul>
+                @if (season.Episodes != null && season.Episodes.Any())
+                {
+                    @foreach (var episode in season.Episodes)
+                    {
+                        <li>
+                            <a>
+                                <a href="@Url.Action("Episode", "Anime", new { animeName = Model.Title, seasonId = season.Id, episodeId = episode.Id })">@episode.EpisodeSrc</a>
+                            </a>
+                        </li>
+                    }
+                }
+                else
+                {
+                    <p>No episodes found for this season.</p>
+                }
+
+            </ul>
+        </li>
+     }
+    
+</ul>
+@{
+    var sectionName = ViewBag.SelectSeason as string;
+}
+
+@if (!string.IsNullOrEmpty(sectionName))
+{
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            const targetSection = document.getElementById(sectionName);
+            if (targetSection) {
+                targetSection.scrollIntoView();
+            }
+        });
+    </script>
+}

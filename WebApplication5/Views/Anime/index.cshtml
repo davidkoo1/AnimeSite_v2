@@ -1,4 +1,17 @@
-﻿@model IEnumerable<Anime>
+﻿<!--model List<Anime>
+
+<h1>All Anime</h1>
+
+<ul>
+    foreach (var anime in Model)
+    {
+        <li>
+            <a href="Url.Action("Detail", "Anime", new { animeName = anime.Title })">anime.Title</a>
+        </li>
+    }
+</ul>
+-->
+@model IEnumerable<Anime>
 @*
 
 *@
@@ -16,77 +29,60 @@
             else
                 n++;
         }
-        return avgSum / (seasons.Count()-n);
-    }
-    Anime selectedAnime = null;
-    void SelectAnime(int animeId)
-    {
-        selectedAnime = Model.FirstOrDefault(a => a.Id == animeId);
+        return avgSum / (seasons.Count() - n);
     }
 }
 
 <div class="grid">
     @foreach (var anime in Model)
     {
-        <div class="content flow">
-            
-            <a onclick="openModal({url: '/Anime/GetAnime', data: '@anime.Id'})" data-toggle="ajax-modal" data-trigger="Modal">
+        <a onclick="openModal({url: '/Anime/GetAnime', data: '@anime.Id'})" data-toggle="ajax-modal" data-trigger="Modal">
+            <div class="content flow">
+
+
                 <img src="@anime.TitleImage" alt="Mimimamomu" title="click me!">
 
                 <p class="title"><strong>@anime.Title</strong></p>
-            </a>
-            <p>@anime.Editor.Name</p>
-            <ul>
-                @foreach (var season in anime.Seasons)
-                {
-                    <li>
-                        @season.Name - @season.Date -             
-                        <small class="text-muted">
-                            <a style="color:white; text-decoration:none;" 
-                            asp-area="" asp-controller="Season" asp-action="Detail" asp-route-id="@season.Id">
-                                <button class="btn btn-primary">Go watch!</button></a>
-                        </small>
-                    </li>
-                }
-            </ul>
-            <div class="rating">
-                @if (anime.Seasons.Any())
-                {
-                    int averageRating = (int)averageAnimeRating(anime.Seasons);
-                    for (int i = 1; i <= 5; i++)
+
+
+                <div class="rating">
+                    @if (anime.Seasons.Any())
                     {
-                        if (i <= averageRating)
+                        int averageRating = (int)averageAnimeRating(anime.Seasons);
+                        for (int i = 1; i <= 5; i++)
                         {
-                            <span class="fa fa-star checked"></span>
+                            if (i <= averageRating)
+                            {
+                                <span class="fa fa-star checked"></span>
+                            }
+                            else
+                            {
+                                <span class="fa fa-star"></span>
+                            }
                         }
-                        else
+
+                        <span style="margin-left: 3px;">(@averageAnimeRating(anime.Seasons).ToString("0.00"))</span>
+
+                    }
+                    else
+                    {
+                        for (int i = 1; i <= 5; i++)
                         {
                             <span class="fa fa-star"></span>
                         }
                     }
+                </div>
+                <ul>
 
-                    <span style="margin-left: 3px;">(@averageAnimeRating(anime.Seasons).ToString("0.00"))</span>
-
-                }
-                else
-                {
-                    for (int i = 1; i <= 5; i++)
+                    @foreach (var genre in anime.AnimeGenres)
                     {
-                        <span class="fa fa-star"></span>
+                        <li>@genre.Genre.Name</li>
                     }
-                }
+                </ul>
+
+
             </div>
-            <ul>
-
-                @foreach (var genre in anime.AnimeGenres)
-                {
-                    <li>@genre.Genre.Name</li>
-                }
-            </ul>
-
-
-        </div>
-
+        </a>
     }
 </div>
 

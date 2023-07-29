@@ -1,0 +1,19 @@
+﻿@model Season
+
+<h2>Episodes</h2>
+@if (Model.Episodes != null && Model.Episodes.Any())
+{
+    <ul>
+        @foreach (var episode in Model.Episodes)
+        {
+            <li>
+                <a href="@Url.Action("Episode", "Anime", new { animeName = Model.Anime.Title, seasonId = Model.Id, episodeId = episode.Id })">@episode.EpisodeSrc</a>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No episodes found for this season.</p>
+}
+
