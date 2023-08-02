@@ -76,7 +76,7 @@ namespace WebApplication5.Controllers
         {
             Episode episode = _dataContext.Episodes
                 .Include(e => e.Season)
-                .ThenInclude(s => s.Anime)
+                .ThenInclude(s => s.Anime).Include(s => s.Season).ThenInclude(e=> e.Episodes)
                 .FirstOrDefault(e => e.Id == episodeId && e.Season.Id == seasonId && e.Season.Anime.Title == animeName);
 
             if (episode == null)

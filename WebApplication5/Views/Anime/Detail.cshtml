@@ -16,45 +16,218 @@
     }
 </ul>
 -->
-
-<!--Общая страница с сезонами и переход в нужную секцию-->
 @model Anime
+
+<style>
+    body {
+        background-color: #f5f5f5;
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        color: #ff6666;
+        font-size: 36px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    p {
+        color: #333;
+        font-size: 18px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .Seasonscontent {
+        width: 73.2%;
+        padding: 10px;
+        background-size: cover;
+        box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
+        background: white;
+        border-radius: 15px;
+        break-inside: avoid;
+        margin: 0 auto;
+    }
+
+    .sector_border {
+        position: relative;
+        padding-bottom: 10px;
+        border-bottom-left-radius: 10px;
+        background: linear-gradient(to right, #ff6666, #ff9999);
+        margin: 10px 0 15px;
+        text-align: center;
+    }
+
+        .sector_border h2 {
+            padding: 10px;
+            margin: 0;
+            font-size: 24px;
+            color: #fff;
+        }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        margin-bottom: 20px;
+    }
+
+    a {
+        text-decoration: none;
+        color: #ff6666;
+    }
+
+        a:hover {
+            color: #ff9999;
+        }
+
+    img {
+        width: 100px;
+        height: 140px;
+        border-radius: 8px;
+        margin-right: 5px;
+    }
+
+    /* Stylish separator between seasons */
+    .Seasonscontent li:not(:last-child) {
+        border-bottom: 2px dashed #ff9999;
+        padding-bottom: 10px;
+    }
+
+    /* Stylish button-like frame for episodes */
+    .episode-list {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 10px;
+    }
+
+    .episode {
+        background-color: #ff9999;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 20px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        width: 40px;
+        text-align: center;
+        font-weight: bold;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+        .episode a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .episode:hover {
+            background-color: #ff6666;
+        }
+
+    .season-post {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px; /* Add some margin between posts */
+    }
+
+        .season-post img {
+            width: 100px;
+            height: 140px;
+            border-radius: 8px;
+            margin-right: 10px; /* Add spacing between image and details */
+        }
+
+    .season-details {
+        display: flex;
+        flex-direction: column;
+        background-color: #f0f0f0;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 25px;
+    }
+
+    .rating {
+        font-weight: bold;
+        font-size: 14px;
+        color: #666;
+    }
+
+    /* Style for the main text in season details */
+    .season-details p {
+        margin: 5px 0;
+        text-align: left;
+        color: #333;
+    }
+
+        /* Style for the comment and view count text */
+        .season-details p.comment {
+            color: #888;
+        }
+
+        /* Style for the season number */
+        .season-details p strong {
+            color: #ff6666;
+        }
+</style>
 
 <h1>@Model.Title</h1>
 <p>@Model.Description</p>
 
-<h2>Seasons</h2>
-<ul>
-    
-    @foreach (var season in Model.Seasons)
-    {
+<div class="Seasonscontent">
+    <div class="sector_border">
+        <h2>Смотреть все сезоны и серии</h2>
+    </div>
 
-        <li id="@season.Name">
-            <a href="@Url.Action("Season", "Anime", new { animeName = Model.Title, seasonId = season.Id })">@season.Name
-            <img src="@season.TitleImage"/></a>
+    <ul>
+        @{
+            int i = 1;
+        }
+        @foreach (var season in Model.Seasons)
+        {
+            <li id="@season.Name">
+                <div class="season-post">
 
-            <ul>
+                    <figure>
+                        <a href="@Url.Action("Season", "Anime", new { animeName = Model.Title, seasonId = season.Id })">
+                            <img src="@season.TitleImage" />
+                        </a>
+                        <figcaption><p class="rating">Рейтинг</p></figcaption>
+                    </figure>
+
+
+                    <div class="season-details">
+                        <p class="comment">Season: @i</p>
+                        <p class="comment"><strong>Date: @season.Date</strong></p>
+                        <p class="comment">Episodes: @season.Episodes.Count()</p>
+                        <p class="comment">Сколько уже просмотрено например, а на другой строчке комментариев и просмотров например</p>
+                    </div>
+                </div>
                 @if (season.Episodes != null && season.Episodes.Any())
                 {
-                    @foreach (var episode in season.Episodes)
-                    {
-                        <li>
-                            <a>
-                                <a href="@Url.Action("Episode", "Anime", new { animeName = Model.Title, seasonId = season.Id, episodeId = episode.Id })">@episode.EpisodeSrc</a>
-                            </a>
-                        </li>
-                    }
+                    <div class="episode-list">
+                        @{
+                            int j = 1;
+                        }
+                        @foreach (var episode in season.Episodes)
+                        {
+                            <div class="episode">
+                                <a href="@Url.Action("Episode", "Anime", new { animeName = Model.Title, seasonId = season.Id, episodeId = episode.Id })">@j</a>
+                            </div>
+                            j++;
+                        }
+                    </div>
                 }
                 else
                 {
                     <p>No episodes found for this season.</p>
                 }
-
-            </ul>
-        </li>
-     }
-    
-</ul>
+            </li>
+            i++;
+        }
+    </ul>
+</div>
 @{
     var sectionName = ViewBag.SelectSeason as string;
 }
@@ -62,7 +235,6 @@
 @if (!string.IsNullOrEmpty(sectionName))
 {
     <script>
-        
         document.addEventListener("DOMContentLoaded", function () {
             const targetSection = document.getElementById(sectionName);
             if (targetSection) {
@@ -71,3 +243,4 @@
         });
     </script>
 }
+

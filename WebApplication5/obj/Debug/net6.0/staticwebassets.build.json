@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "AYvZR9GhSZuwkunFOX8ATE8hY5hoBJjyFFIaSO1Vrvo=",
+  "Hash": "kotR9eMTsMBCytmk3fg5AuMsVkzipqdSM+z6aslASWk=",
   "Source": "WebApplication5",
   "BasePath": "_content/WebApplication5",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\WebApplication5\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\WebApplication5.bundle.scp.css"
+    },
+    {
+      "Identity": "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\WebApplication5\\wwwroot\\css\\episode.css",
+      "SourceId": "WebApplication5",
+      "SourceType": "Discovered",
+      "ContentRoot": "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\WebApplication5\\wwwroot\\",
+      "BasePath": "_content/WebApplication5",
+      "RelativePath": "css/episode.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\episode.css"
     },
     {
       "Identity": "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\WebApplication5\\wwwroot\\css\\site.css",
