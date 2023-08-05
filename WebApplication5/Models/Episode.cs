@@ -11,6 +11,6 @@ namespace WebApplication5.Models
         [ForeignKey("Season")]
         public int SeasonId { get; set; }
         public Season Season { get; set; }
-        public ICollection<Comment> Comments { get; set; }
+        public ICollection<Comment>? Comments { get; set; }
     }
 }

@@ -1,28 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication5.Data;
+using WebApplication5.Interfaces;
 using WebApplication5.Models;
 
 namespace WebApplication5.Controllers
 {
     public class SeasonController : Controller
     {
-        private readonly DataContext _dataContext;
-        public SeasonController(DataContext dataContext)
+        private readonly ISeasonRepository _seasonRepository;
+        public SeasonController(ISeasonRepository seasonRepository)
         {
-            _dataContext = dataContext;
+            _seasonRepository = seasonRepository;
         }
 
-        [HttpGet("/Season-{Id}")]
-        [ProducesResponseType(200, Type = typeof(Season))]
-        public IActionResult Season(string name, int id)
+        public async Task<IActionResult> Detail(string animeName, string? seasonName)
         {
-            Season season = _dataContext.Seasons.Include(a => a.Anime).ThenInclude(g => g.AnimeGenres).ThenInclude(g => g.Genre)
-                .Include(e => e.Episodes)
-                .Include(r => r.Ratings)
-                .FirstOrDefault(s => s.Id == id);   
-
-            return View(season);
+            var seasons = await _seasonRepository.GetSeasonsByAnime(animeName);
+            /*
+            Anime anime = _dataContext.Anime.Include(a => a.Seasons).ThenInclude(e => e.Episodes).FirstOrDefault(a => a.Title == animeName);
+            if (anime == null)
+            {
+                return NotFound();
+            }
+            */
+            ViewBag.SelectSeason = seasonName;
+            return View("Detail", seasons);
         }
+
     }
 }

@@ -8,7 +8,7 @@ namespace WebApplication5.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }    //Special number
-        public DateTime? Date { get; set; }
+        public DateTime? Date { get; set; } //string
         public string TitleImage { get; set; }  //rename-> SeasonImage
         [ForeignKey("Anime")]
         public int AnimeId { get; set; }

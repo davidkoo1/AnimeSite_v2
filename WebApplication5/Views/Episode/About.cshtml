@@ -1,0 +1,63 @@
+﻿@model Episode
+
+<link rel="stylesheet" href="~/css/episode.css">
+
+
+<div class="video-container">
+    <video src="@Model.EpisodeSrc" controls>Video not supported</video>
+    <div class="episode-navigation">
+        @if (Model.Id > 1)
+        {
+            <a class="episode-navigation-button" href="@Url.Action("About", "Episode", new { animeName = Model.Season.Anime.Title, seasonId = Model.Season.Id, episodeId = (Model.Id - 1) })">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 5 5 12 12 19"></polyline>
+                </svg>
+                Previous Episode
+            </a>
+        }
+
+        <a class="episode-navigation-button" href="@Url.Action("Detail", "Season", new { animeName = Model.Season.Anime.Title })#@Model.Season.Name">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book">
+                <path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H19a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v15.5z"></path>
+                <path d="M9 2.5v19"></path>
+                <path d="M16 2.5v19"></path>
+            </svg>
+            All Seasons and Episodes
+        </a>
+
+        @if (Model.Id < Model.Season.Episodes.Count)
+        {
+            <a class="episode-navigation-button" href="@Url.Action("About", "Episode", new { animeName = Model.Season.Anime.Title, seasonId = Model.Season.Id, episodeId = (Model.Id + 1) })">
+                Next Episode
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+        }
+    </div>
+</div>
+
+<div class="episode-details">
+    <h2>Episode Details</h2>
+    <p><strong>Episode:</strong> @Model.Id/@Model.Season.Episodes.Count</p>
+    <p><strong>Season:</strong> @Model.Season.Name</p>
+    <p><strong>Anime:</strong> @Model.Season.Anime.Title</p>
+</div>
+
+<div class="comments">
+    <h2>Comments</h2>
+    <div class="comment">
+        <span class="comment-author">User123:</span>
+        <p>This episode was amazing! I loved the action scenes.</p>
+    </div>
+    <div class="comment">
+        <span class="comment-author">AnimeFan22:</span>
+        <p>Can't wait for the next episode!</p>
+    </div>
+    <!-- Add more comments as needed -->
+</div>
+
+<!-- Back button to go back to the previous page (you can customize the URL as needed) -->
+<a class="back-button" href="/">Back</a>

@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebApplication5.Data;
+using WebApplication5.Interfaces;
+using WebApplication5.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,9 @@ builder.Services.AddRazorPages();
 builder.Services.AddControllers();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IAnimeRepository, AnimeRepository>();
+builder.Services.AddScoped<ISeasonRepository, SeasonRepository>();
+builder.Services.AddScoped<IEpisodeRepository, EpisodeRepository>();
 builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
