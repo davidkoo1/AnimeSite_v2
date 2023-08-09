@@ -25,13 +25,13 @@ namespace WebApplication5.Repository
             return Save();
         }
 
-        public async Task<IEnumerable<Episode>> GetAllEpisodesBySeason(string animeName, int seasonId) => await _dataContext.Episodes.Where(e => e.SeasonId == seasonId && e.Season.Anime.Title.Contains(animeName))
+        public async Task<IEnumerable<Episode>> GetAllEpisodesBySeason(string animeName, int seasonId) => await _dataContext.Episodes.Where(e => e.SeasonNumber == seasonId && e.Season.Anime.AnimeName.Contains(animeName))
             .Include(s => s.Season).ThenInclude(a => a.Anime).ToListAsync();
 
-        public async Task<Episode> GetByIdAsync(string animeName, int seasonId, int id) => await _dataContext.Episodes
-                .Include(e => e.Season)
-                .ThenInclude(s => s.Anime).Include(s => s.Season).ThenInclude(e => e.Episodes)
-                .FirstOrDefaultAsync(e => e.Id == id && e.Season.Id == seasonId && e.Season.Anime.Title == animeName);
+        public async Task<Episode> GetEpisodeAsync(string animeName, int seasonNumber, int episodeNumber) =>
+            await _dataContext.Episodes.Include(s => s.Season).ThenInclude(a => a.Anime)
+            .Include(s => s.Season).ThenInclude(e => e.Episodes).ThenInclude(c => c.Comments).ThenInclude(u => u.User)
+            .FirstOrDefaultAsync(e => e.EpisodeNumber == episodeNumber && e.SeasonNumber == seasonNumber && e.AnimeName == animeName);
 
         public bool Save() => _dataContext.SaveChanges() > 0 ? true : false;
 

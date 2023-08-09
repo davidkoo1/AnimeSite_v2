@@ -1,0 +1,20 @@
+﻿@model Episode
+
+<input type="hidden" asp-for="AnimeName" value="@Model.AnimeName" />
+<input type="hidden" asp-for="SeasonNumber" value="@Model.SeasonNumber" />
+<input type="hidden" asp-for="EpisodeNumber" value="@Model.EpisodeNumber" />
+<input type="hidden" asp-for="Season" value="@Model.Season" />
+
+<div class="form-group">
+    <label asp-for="EpisodeSrc">Video URL</label>
+    <input asp-for="EpisodeSrc" required>
+    <span asp-validation-for="EpisodeSrc" class="text-danger"></span>
+</div>
+
+<!-- File input for video upload
+<div class="form-group">
+    <input type="file" id="fileInput" class="file-input" name="VideoFile" accept="video/*">
+    <label for="fileInput" class="file-input-label">Choose Video File</label>
+    <span class="file-name" id="fileName">No file chosen</span>
+</div>
+-->

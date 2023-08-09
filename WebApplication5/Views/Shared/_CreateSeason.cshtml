@@ -1,0 +1,42 @@
+﻿@model Season
+<!--
+<input type="hidden" asp-for="AnimeName" />
+<input type="hidden" asp-for="SeasonNumber" />
+-->
+<input type="hidden" asp-for="AnimeName" value="@Model.AnimeName" />
+<input type="hidden" asp-for="SeasonNumber" value="@Model.SeasonNumber" />
+<input type="hidden" asp-for="Episodes" value="@Model.Episodes" />
+
+
+<div class="form-group">
+    <label asp-for="SeasonTitle">Season Title</label>
+    <input asp-for="SeasonTitle" required>
+    <span asp-validation-for="SeasonTitle" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="SeasonImage">Image</label>
+    <input asp-for="SeasonImage" required>
+    <span asp-validation-for="SeasonImage" class="text-danger"></span>
+</div>
+
+
+    @{
+        await Html.RenderPartialAsync("_CreateEpisode", Model.Episodes.ElementAt(0));
+    }
+
+<!--
+<div class="form-group">
+    <label>Episode 1</label>
+    <input type="hidden" name="Episodes.Index" value="0" />
+    <input type="hidden" name="Episodes[0].AnimeName" value="Model.Episodes.ElementAt(0).AnimeName" />
+    <input type="hidden" name="Episodes[0].SeasonNumber" value="Model.Episodes.ElementAt(0).SeasonNumber" />
+    <input type="hidden" name="Episodes[0].EpisodeNumber" value="Model.Episodes.ElementAt(0).EpisodeNumber" />
+
+    <div class="form-group">
+        <label>EpisodeSrc</label>
+        <input type="text" name="Episodes[0].EpisodeSrc" required>
+        <span class="text-danger"></span>
+    </div>
+</div>
+-->

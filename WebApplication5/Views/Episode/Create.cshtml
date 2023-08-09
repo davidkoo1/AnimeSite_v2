@@ -90,20 +90,7 @@
 
 <div class="form-container">
     <form method="post" asp-action="Create">
-
-        <div class="form-group">
-            <label asp-for="EpisodeSrc">Video URL</label>
-            <input asp-for="EpisodeSrc" required>
-            <span asp-validation-for="EpisodeSrc" class="text-danger"></span>
-        </div>
-
-        <!-- File input for video upload 
-        <div class="form-group">
-            <input type="file" id="fileInput" class="file-input" name="VideoFile" accept="video/*">
-            <label for="fileInput" class="file-input-label">Choose Video File</label>
-            <span class="file-name" id="fileName">No file chosen</span>
-        </div>
-        -->
+        @{await Html.RenderPartialAsync("_CreateEpisode", Model);}
         <button type="submit" class="submit-button">Create</button>
     </form>
 </div>

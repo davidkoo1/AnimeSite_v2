@@ -12,7 +12,7 @@
         {
             type: 'GET',
             url: url,
-            data: { "id": id },
+            data: { "AnimeName": id },
             success: function (response) {
                 $('.modal-dialog');
                 modal.find(".modal-content").html(response);

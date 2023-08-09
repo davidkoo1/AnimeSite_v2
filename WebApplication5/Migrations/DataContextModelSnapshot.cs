@@ -24,46 +24,43 @@ namespace WebApplication5.Migrations
 
             modelBuilder.Entity("WebApplication5.Models.Anime", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("AnimeName")
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnOrder(1);
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("EditorId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("int")
+                        .HasColumnOrder(0);
 
                     b.Property<string>("TitleImage")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("VideoGuid")
+                    b.Property<string>("Trailer")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("AnimeName");
 
                     b.HasIndex("EditorId");
 
-                    b.ToTable("Anime");
+                    b.ToTable("Animes");
                 });
 
             modelBuilder.Entity("WebApplication5.Models.AnimeGenre", b =>
                 {
-                    b.Property<int>("AnimeId")
-                        .HasColumnType("int");
+                    b.Property<string>("AnimeName")
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnOrder(0);
 
                     b.Property<int>("GenreId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
-                    b.HasKey("AnimeId", "GenreId");
+                    b.HasKey("AnimeName", "GenreId");
 
                     b.HasIndex("GenreId");
 
@@ -72,30 +69,30 @@ namespace WebApplication5.Migrations
 
             modelBuilder.Entity("WebApplication5.Models.Comment", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("AnimeName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("SeasonNumber")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<int>("EpisodeNumber")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime?>("Date")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("EpisodeId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Message")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EpisodeId");
+                    b.HasKey("AnimeName", "UserId", "SeasonNumber", "EpisodeNumber");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("AnimeName", "SeasonNumber", "EpisodeNumber");
 
                     b.ToTable("Comments");
                 });
@@ -119,22 +116,23 @@ namespace WebApplication5.Migrations
 
             modelBuilder.Entity("WebApplication5.Models.Episode", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("AnimeName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("SeasonNumber")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<int>("EpisodeNumber")
+                        .HasColumnType("int");
 
                     b.Property<string>("EpisodeSrc")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SeasonId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("ReleaseEpisode")
+                        .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("SeasonId");
+                    b.HasKey("AnimeName", "SeasonNumber", "EpisodeNumber");
 
                     b.ToTable("Episodes");
                 });
@@ -158,24 +156,19 @@ namespace WebApplication5.Migrations
 
             modelBuilder.Entity("WebApplication5.Models.Rating", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("AnimeName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("SeasonNumber")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Mark")
                         .HasColumnType("int");
 
-                    b.Property<int>("SeasonId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SeasonId");
+                    b.HasKey("AnimeName", "SeasonNumber", "UserId");
 
                     b.HasIndex("UserId");
 
@@ -184,40 +177,30 @@ namespace WebApplication5.Migrations
 
             modelBuilder.Entity("WebApplication5.Models.Season", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("AnimeName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("SeasonNumber")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AnimeId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
+                    b.Property<string>("SeasonImage")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TitleImage")
+                    b.Property<string>("SeasonTitle")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("AnimeId");
+                    b.HasKey("AnimeName", "SeasonNumber");
 
                     b.ToTable("Seasons");
                 });
 
             modelBuilder.Entity("WebApplication5.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("UserId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -227,10 +210,14 @@ namespace WebApplication5.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ProfileImage")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
                     b.ToTable("Users");
                 });
@@ -238,7 +225,7 @@ namespace WebApplication5.Migrations
             modelBuilder.Entity("WebApplication5.Models.Anime", b =>
                 {
                     b.HasOne("WebApplication5.Models.Editor", "Editor")
-                        .WithMany()
+                        .WithMany("Animes")
                         .HasForeignKey("EditorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -250,7 +237,7 @@ namespace WebApplication5.Migrations
                 {
                     b.HasOne("WebApplication5.Models.Anime", "Anime")
                         .WithMany("AnimeGenres")
-                        .HasForeignKey("AnimeId")
+                        .HasForeignKey("AnimeName")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -267,15 +254,15 @@ namespace WebApplication5.Migrations
 
             modelBuilder.Entity("WebApplication5.Models.Comment", b =>
                 {
-                    b.HasOne("WebApplication5.Models.Episode", "Episode")
-                        .WithMany()
-                        .HasForeignKey("EpisodeId")
+                    b.HasOne("WebApplication5.Models.User", "User")
+                        .WithMany("Comment")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebApplication5.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                    b.HasOne("WebApplication5.Models.Episode", "Episode")
+                        .WithMany("Comments")
+                        .HasForeignKey("AnimeName", "SeasonNumber", "EpisodeNumber")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -288,7 +275,7 @@ namespace WebApplication5.Migrations
                 {
                     b.HasOne("WebApplication5.Models.Season", "Season")
                         .WithMany("Episodes")
-                        .HasForeignKey("SeasonId")
+                        .HasForeignKey("AnimeName", "SeasonNumber")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -297,15 +284,15 @@ namespace WebApplication5.Migrations
 
             modelBuilder.Entity("WebApplication5.Models.Rating", b =>
                 {
-                    b.HasOne("WebApplication5.Models.Season", "Season")
-                        .WithMany("Ratings")
-                        .HasForeignKey("SeasonId")
+                    b.HasOne("WebApplication5.Models.User", "User")
+                        .WithMany("Rating")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebApplication5.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                    b.HasOne("WebApplication5.Models.Season", "Season")
+                        .WithMany("Ratings")
+                        .HasForeignKey("AnimeName", "SeasonNumber")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -318,7 +305,7 @@ namespace WebApplication5.Migrations
                 {
                     b.HasOne("WebApplication5.Models.Anime", "Anime")
                         .WithMany("Seasons")
-                        .HasForeignKey("AnimeId")
+                        .HasForeignKey("AnimeName")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -332,6 +319,16 @@ namespace WebApplication5.Migrations
                     b.Navigation("Seasons");
                 });
 
+            modelBuilder.Entity("WebApplication5.Models.Editor", b =>
+                {
+                    b.Navigation("Animes");
+                });
+
+            modelBuilder.Entity("WebApplication5.Models.Episode", b =>
+                {
+                    b.Navigation("Comments");
+                });
+
             modelBuilder.Entity("WebApplication5.Models.Genre", b =>
                 {
                     b.Navigation("AnimeGenres");
@@ -342,6 +339,13 @@ namespace WebApplication5.Migrations
                     b.Navigation("Episodes");
 
                     b.Navigation("Ratings");
+                });
+
+            modelBuilder.Entity("WebApplication5.Models.User", b =>
+                {
+                    b.Navigation("Comment");
+
+                    b.Navigation("Rating");
                 });
 #pragma warning restore 612, 618
         }

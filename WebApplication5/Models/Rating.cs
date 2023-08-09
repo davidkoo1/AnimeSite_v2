@@ -1,18 +1,23 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication5.Models
 {
-    public class Rating
+    [PrimaryKey("AnimeName", "SeasonNumber", "UserId")]
+    public class Rating 
     {
-        [Key]
-        public int Id { get; set; }
-        public int Mark { get; set; }
+        public string AnimeName { get; set; }
+        public int SeasonNumber { get; set; }
+
         [ForeignKey("User")]
-        public int UserId { get; set; }
-        public User User { get; set; }
-        [ForeignKey("Season")]
-        public int SeasonId { get; set; }
-        public Season Season { get; set; }
+        public Guid UserId { get; set; }
+
+        public int Mark { get; set; }
+
+        [ForeignKey("AnimeName, SeasonNumber")]
+        public virtual Season Season { get; set; }
+        public virtual User User { get; set; }
     }
 }

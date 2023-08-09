@@ -1,0 +1,20 @@
+﻿<!-- _Comments.cshtml -->
+@model IEnumerable<Comment>
+
+@if (Model != null && Model.Any())
+{
+    <div class="comments">
+        <h2>Comments</h2>
+        @foreach (var comment in Model)
+        {
+            <div class="comment">
+                <span class="comment-author">@comment.User.Nickname:</span>
+                <p>@comment.Message</p>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No comments yet.</p>
+}

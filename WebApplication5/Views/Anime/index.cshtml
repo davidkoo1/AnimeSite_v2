@@ -36,13 +36,13 @@
 <div class="grid">
     @foreach (var anime in Model)
     {
-        <a onclick="openModal({url: '/Anime/GetAnime', data: '@anime.Id'})" data-toggle="ajax-modal" data-trigger="Modal">
+        <a onclick="openModal({url: '/Anime/GetAnime', data: '@anime.AnimeName'})" data-toggle="ajax-modal" data-trigger="Modal">
             <div class="content flow">
 
 
                 <img src="@anime.TitleImage" alt="Mimimamomu" title="click me!">
 
-                <p class="title"><strong>@anime.Title</strong></p>
+                <p class="title"><strong>@anime.AnimeName</strong></p>
 
 
                 <div class="rating">

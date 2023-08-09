@@ -172,7 +172,7 @@
         }
 </style>
 
-
+<h1>@Model.ElementAt(0).AnimeName</h1>
 <div class="Seasonscontent">
     <div class="sector_border">
         <h2>Смотреть все сезоны и серии</h2>
@@ -184,12 +184,12 @@
         }
         @foreach (var season in Model)
         {
-            <li id="@season.Name">
+            <li id="@season.SeasonNumber">
                 <div class="season-post">
 
                     <figure>
-                        <a href="@Url.Action("Index", "Episode", new { animeName = season.Anime.Title, seasonId = season.Id })">
-                            <img src="@season.TitleImage" />
+                        <a href="@Url.Action("Index", "Episode", new { animeName = season.AnimeName, seasonNumber = season.SeasonNumber })">
+                            <img src="@season.SeasonTitle" />
                         </a>
                         <figcaption><p class="rating">Рейтинг</p></figcaption>
                     </figure>
@@ -197,7 +197,6 @@
 
                     <div class="season-details">
                         <p class="comment">Season: @i</p>
-                        <p class="comment"><strong>Date: @season.Date</strong></p>
                         <p class="comment">Episodes: @season.Episodes.Count()</p>
                         <p class="comment">Сколько уже просмотрено например, а на другой строчке комментариев и просмотров например</p>
                     </div>
@@ -211,7 +210,7 @@
                         @foreach (var episode in season.Episodes)
                         {
                             <div class="episode">
-                                <a href="@Url.Action("About", "Episode", new { animeName = season.Anime.Title, seasonId = season.Id, episodeId = episode.Id })">@j</a>
+                                <a href="@Url.Action("About", "Episode", new { animeName = season.AnimeName, seasonNumber = season.SeasonNumber, episodeNumber = episode.EpisodeNumber })">@j</a>
                             </div>
                             j++;
                         }

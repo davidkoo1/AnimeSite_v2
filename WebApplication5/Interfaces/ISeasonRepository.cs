@@ -4,8 +4,10 @@ namespace WebApplication5.Interfaces
 {
     public interface ISeasonRepository
     {
-        Task<Season> GetByIdAsync(string animeName, int id);
-        Task<IEnumerable<Season>> GetSeasonsByAnime(string animeName);
+        Task<Season> GetSeasonAsync(string animeName, int seasonNumber);
+        Task<IEnumerable<Season>> GetSeasonsByAnimeName(string animeName);
+
+        int GetSeasonCount(string animeName);
         bool Add(Season season);
         bool Update(Season season);
         bool Delete(Season season);

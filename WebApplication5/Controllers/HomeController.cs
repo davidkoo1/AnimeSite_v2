@@ -19,7 +19,7 @@ namespace WebApplication5.Controllers
 
         public IActionResult Index()
         {//.Include(e => e.Seasons).ThenInclude(ep => ep.Episodes)
-            var animes = _dataContext.Anime
+            var animes = _dataContext.Animes
                 .Include(a => a.Seasons).ThenInclude(s => s.Ratings)
                 .Include(a => a.Editor)
                 .Include(a => a.AnimeGenres).ThenInclude(ag => ag.Genre)

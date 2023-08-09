@@ -24,9 +24,10 @@ namespace WebApplication5.Repository
             return Save();
         }
 
-        public async Task<Season> GetByIdAsync(string animeName, int id) => await _dataContext.Seasons.Include(s => s.Episodes).Include(a => a.Anime).FirstOrDefaultAsync(i => i.Id == id && i.Anime.Title == animeName);
+        public async Task<Season> GetSeasonAsync(string animeName, int seasonNumber) => await _dataContext.Seasons.Include(s => s.Episodes).Include(a => a.Anime).FirstOrDefaultAsync(i => i.SeasonNumber == seasonNumber && i.Anime.AnimeName == animeName);
 
-        public async Task<IEnumerable<Season>> GetSeasonsByAnime(string animeName) => await _dataContext.Seasons.Where(s => s.Anime.Title.Contains(animeName))
+        public int GetSeasonCount(string animeName) => _dataContext.Seasons.Count(a => a.AnimeName == animeName);
+        public async Task<IEnumerable<Season>> GetSeasonsByAnimeName(string animeName) => await _dataContext.Seasons.Where(s => s.Anime.AnimeName.Contains(animeName))
             .Include(e => e.Episodes)
             .Include(a => a.Anime)
             .ToListAsync();
