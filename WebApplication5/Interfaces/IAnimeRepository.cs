@@ -6,10 +6,9 @@ namespace WebApplication5.Interfaces
     {
         Task<IEnumerable<Anime>> GetAllAnime();
         Task<Anime> GetByNameAsync(string AnimeName);
+        Task<Anime> GetByNameAsyncNoTraking(string AnimeName);
         Task<IEnumerable<Anime>> GetAnimeByGenres(string[] genres);
         Task<IEnumerable<Anime>> GetAnimeByEditor(string Editor);
-        Task<IEnumerable<Genre>> GetAllGenres();
-        Task<IEnumerable<Editor>> GetAllEditors();
         bool Add(Anime anime);
         bool Update(Anime anime);
         bool Delete(Anime anime);

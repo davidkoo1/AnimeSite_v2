@@ -1,0 +1,22 @@
+﻿<!-- _Comments.cshtml -->
+@model IEnumerable<Comment>
+
+@if (Model != null && Model.Any())
+{
+    <div class="comments">
+        @foreach (var comment in Model.OrderByDescending(x => x.Date))
+        {
+            <div class="comment">
+                <span class="comment-author">@comment.User.UserName</span>
+                <span class="comment-date">@comment.Date?.ToString("dd/MM/yyyy HH:mm")</span>
+                <p>@comment.Message</p>
+            </div>
+        }
+    </div>
+
+
+}
+@*else
+{
+    <p>No comments yet.</p>
+}*@

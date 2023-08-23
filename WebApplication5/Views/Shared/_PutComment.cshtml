@@ -1,0 +1,60 @@
+﻿<!--_PutComment-->
+@model Comment
+
+<form method="post" asp-controller="Comment" asp-action="EpisodeComment" enctype="multipart/form-data" data-ajax="false" id="addBrtForm" name="addBrtForm">
+    <input type="hidden" asp-for="AnimeName" />
+    <input type="hidden" asp-for="SeasonNumber" />
+    <input type="hidden" asp-for="EpisodeNumber" />
+    <input type="hidden" asp-for="AppUserId" />
+
+    <div class="firstComment">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Add your comment..." name="Message"></textarea>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <button type="submit" class="btn btn-primary" style="margin-top: 10px; width: 100%"><i class="fa fa-paper-plane"></i></button>
+        }
+    </div>
+
+
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#addBrtForm').submit(function (e) {
+            e.preventDefault();
+
+            var formdata = new FormData($(this).get(0));
+            $.ajax({
+                url: "https://localhost:7136/Comment/EpisodeComment",
+                type: 'POST',
+                data: formdata,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function (response) {
+                    if (response.Message !== null) {
+                        // Clear the input field
+                        $('#exampleFormControlTextarea1').val('');
+
+                        // Append the new comment to the comments section
+                        var newComment = '<div class="comment">' +
+                            '<span class="comment-author">' + response.User.UserName + '</span>' +
+                            '<span class="comment-date">' + response.Date + '</span>' +
+                            '<p>' + response.Message + '</p>' +
+                            '</div>';
+
+                        $('.comments').append(newComment);
+                    } else {
+                        alert("Try Again!! Comment Not Added");
+                    }
+                }
+                error: function (e) {
+                    alert("Network error has occurred, please try again!");
+                }
+            });
+        });
+    });
+</script>
+

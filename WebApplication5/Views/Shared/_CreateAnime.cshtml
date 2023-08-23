@@ -1,0 +1,197 @@
+﻿@using WebApplication5.ViewModels;
+@model CreateAnimeViewModel
+<style>
+    /* Anime-themed form group */
+    .anime-form-group {
+        margin-bottom: 20px;
+        padding: 15px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+    }
+
+    /* Anime-themed label */
+    .anime-label {
+        color: #ff6666;
+        font-size: 16px;
+        margin-right: 10px;
+    }
+
+    /* Anime-themed select */
+    .anime-select {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+        background-color: #f8f8f8;
+        transition: border-color 0.3s;
+    }
+
+        .anime-select:focus {
+            border-color: #ff6666;
+        }
+
+    /* Anime-themed validation message */
+    .text-danger {
+        color: #ff6666;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    /* Anime-themed buttons container */
+    .anime-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 5px;
+    }
+
+    /* Anime-themed buttons */
+    .anime-button {
+        margin-right: 10px;
+        margin-bottom: 5px;
+        color: #fff;
+        text-decoration: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: #ff6666;
+        transition: background-color 0.3s;
+    }
+
+        .anime-button:hover {
+            background-color: #ff9999;
+        }
+
+    .custom-checkbox {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .custom-control-input {
+        margin-right: 5px;
+    }
+
+    .custom-control-label {
+        position: relative;
+        top: 2px;
+    }
+
+    .text-danger {
+        color: red;
+    }
+
+    #list {
+        display: none;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+        /* Стили для элементов списка */
+        #list label {
+            padding: 5px;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+    /* Стили для развернутой и свернутой иконки */
+    #fold {
+        cursor: pointer;
+    }
+</style>
+
+<div class="form-group">
+    <label asp-for="AnimeName">Anime Title</label>
+    <input asp-for="AnimeName" required>
+    <span asp-validation-for="AnimeName" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Description">Description</label>
+    <input asp-for="Description">
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="TitleImageUpload">ImageFile</label>
+    <input asp-for="TitleImageUpload" type="file">
+    <span asp-validation-for="TitleImageUpload" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="TitleImageLink">Image Link</label>
+    <input asp-for="TitleImageLink">
+    <span asp-validation-for="TitleImageLink" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Trailer">TeaserVideoSrc</label>
+    <input asp-for="Trailer">
+    <span asp-validation-for="Trailer" class="text-danger"></span>
+</div>
+
+
+<!--Editors-->
+
+<div class="form-group anime-form-group">
+    <label class="anime-label">Editor</label>
+    @Html.DropDownListFor(model => model.EditorId, new SelectList(ViewBag.Publishers, "Id", "Name"), "Select", new { @class = "form-control anime-select", id = "publisherDropdown" })
+    @Html.ValidationMessageFor(model => model.EditorId, "", new { @class = "text-danger" })
+</div>
+@*
+
+<div class="form-group">
+    <label for="exampleFormControlSelect1">Editor Select</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+        @foreach (var editor in ViewBag.Publishers)
+        {
+             <option asp-for="EditorId" value="@editor.Id">@editor.Name</option>
+        }
+    </select>
+</div>
+*@
+
+<!--Genres-->
+<div class="form-group">
+    <p>
+        Genres <span id="fold"></span>
+        <div id="list">
+            <div class="checkbox-list">
+                @foreach (var genre in ViewBag.Genres)
+                {
+                    <label class="custom-checkbox">
+                        <input type="checkbox" name="selectedGenres" value="@genre.Id" class="custom-control-input">
+                        <span class="custom-control-label">@genre.Name</span>
+                    </label>
+                    <br />
+                }
+            </div>
+        </div>
+        @Html.ValidationMessageFor(model => model.AnimeGenres, "", new { @class = "text-danger" })
+    </p>
+</div>
+
+
+
+
+
+<!--Season-->
+<partial name="_CreateSeason" for="SeasonVM" />
+
+<!--GenresJS-->
+<script>
+    var list = document.getElementById("list");
+    var fold = document.getElementById("fold");
+
+    var open = function () {
+        fold.innerHTML = '▼';
+        list.style.display = 'block';
+        fold.onclick = close;
+    };
+    var close = function () {
+        fold.innerHTML = '◀';
+        list.style.display = 'none';
+        fold.onclick = open;
+    };
+
+    close();
+</script>

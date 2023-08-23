@@ -1,0 +1,70 @@
+﻿@using WebApplication5.Interfaces
+@model FavouriteAnime
+@inject IWishListRepository WishList
+
+
+<style>
+    .bookmark-button-add {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        color: #666;
+        outline: none; /* Убираем выделение при фокусе */
+        font-size: 24px;
+    }
+
+        .bookmark-button-add:hover .bookmark-icon {
+            color: gold;
+        }
+
+    .bookmark-button-delete {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        color: gold;
+        outline: none; /* Убираем выделение при фокусе */
+        font-size: 24px;
+    }
+
+        .bookmark-button-delete:hover .bookmark-icon {
+            color: #666;
+        }
+
+    .bookmark-icon {
+        font-size: 24px; /* Увеличили размер иконки */
+        margin-left: 5px;
+    }
+
+</style>
+
+
+
+@{
+    var isFavourite = WishList.ExistsinVishList(Model.AnimeName, Model.AppUserId);
+}
+<form method="post" asp-controller="WishList" asp-action="FavouriteAnime">
+    <input type="hidden" asp-for="AnimeName" />
+    <input type="hidden" asp-for="AppUserId" />
+    @if (!isFavourite)
+    {
+        <p>
+            <span class="bookmark-text">Добавить аниме в избранное</span>
+            <button type="submit" class="bookmark-button-add">
+                <i class="bookmark-icon fa fa-bookmark"></i>
+            </button>
+        </p>
+    }
+    else if (isFavourite)
+    {
+        <p>
+            <span class="bookmark-text">Удалить аниме из избранного</span>
+            <button type="submit" class="bookmark-button-delete">
+                <i class="bookmark-icon fa fa-bookmark"></i>
+            </button>
+        </p>
+    }
+
+</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

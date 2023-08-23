@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kotR9eMTsMBCytmk3fg5AuMsVkzipqdSM+z6aslASWk=",
+  "Hash": "xxaQpzhSibjqFfbrq8d1ia1dBV39hIHQ3uJwE4vt75k=",
   "Source": "WebApplication5",
   "BasePath": "_content/WebApplication5",
   "Mode": "Default",
@@ -51,6 +51,23 @@
       "OriginalItemSpec": "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\WebApplication5\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\WebApplication5.bundle.scp.css"
     },
     {
+      "Identity": "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\WebApplication5\\wwwroot\\css\\anime.css",
+      "SourceId": "WebApplication5",
+      "SourceType": "Discovered",
+      "ContentRoot": "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\WebApplication5\\wwwroot\\",
+      "BasePath": "_content/WebApplication5",
+      "RelativePath": "css/anime.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\anime.css"
+    },
+    {
       "Identity": "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\WebApplication5\\wwwroot\\css\\episode.css",
       "SourceId": "WebApplication5",
       "SourceType": "Discovered",
@@ -66,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\episode.css"
+    },
+    {
+      "Identity": "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\WebApplication5\\wwwroot\\css\\season.css",
+      "SourceId": "WebApplication5",
+      "SourceType": "Discovered",
+      "ContentRoot": "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\WebApplication5\\wwwroot\\",
+      "BasePath": "_content/WebApplication5",
+      "RelativePath": "css/season.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\season.css"
     },
     {
       "Identity": "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\WebApplication5\\wwwroot\\css\\site.css",

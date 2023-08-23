@@ -1,0 +1,17 @@
+﻿@using WebApplication5.ViewModels;
+@model EditEpisodeViewModel
+
+<input type="hidden" asp-for="AnimeName" />
+<input type="hidden" asp-for="SeasonNumber" />
+<input type="hidden" asp-for="EpisodeNumber" />
+
+<div class="form-group">
+    <label asp-for="EpisodeSrcUpload">Video File</label>
+    <input asp-for="EpisodeSrcUpload" type="file">
+    <span asp-validation-for="EpisodeSrcUpload" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="EpisodeSrcLink">Video Link</label>
+    <input asp-for="EpisodeSrcLink">
+    <span asp-validation-for="EpisodeSrcLink" class="text-danger"></span>
+</div>

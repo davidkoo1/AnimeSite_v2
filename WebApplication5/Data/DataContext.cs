@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using WebApplication5.Models;
 
 namespace WebApplication5.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<User>
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
@@ -17,10 +19,11 @@ namespace WebApplication5.Data
         public DbSet<Editor> Editors { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Rating> Ratings { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<FavouriteAnime> FavouriteAnime { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<IdentityUserLogin<string>>().HasNoKey();
             /* modelBuilder.Entity<AnimeGenre>().HasKey(ag => new { ag.AnimeName, ag.GenreId });
              modelBuilder.Entity<AnimeGenre>().HasOne(a => a.Anime).WithMany(ag => ag.AnimeGenres).HasForeignKey(a => a.AnimeName);
              modelBuilder.Entity<AnimeGenre>().HasOne(a => a.Genre).WithMany(ag => ag.AnimeGenres).HasForeignKey(g => g.GenreId);
@@ -33,8 +36,9 @@ namespace WebApplication5.Data
              // Configure IdentityUserLogin<string> as a keyless entity type
              modelBuilder.Entity<IdentityUserLogin<string>>().HasNoKey();
 
-             base.OnModelCreating(modelBuilder); 
+             
             */
+            base.OnModelCreating(modelBuilder); 
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -42,6 +46,7 @@ namespace WebApplication5.Data
             optionsBuilder.UseLazyLoadingProxies();
             base.OnConfiguring(optionsBuilder);
         }
+
 
     }
 }

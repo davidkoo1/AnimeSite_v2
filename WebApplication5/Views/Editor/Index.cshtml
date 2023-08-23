@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Editor>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<style>
+    .editorContent {
+        width: 50%;
+        padding: 10px;
+        background-size: cover;
+        box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
+        background: #f8f8f8;
+        border-radius: 15px;
+        margin: 10px auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .comment {
+        color: black;
+        font-size: 18px;
+        white-space: nowrap; /* Предотвращает перенос текста на новую строку */
+        overflow: hidden; /* Обрезает текст, который выходит за пределы контейнера */
+        text-overflow: ellipsis; /* Добавляет троеточие к обрезанному тексту */
+        max-width: 70%; /* Максимальная ширина для текста, чтобы освободить место для кнопок */
+    }
+
+
+    .btn {
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        color: white;
+        border: none;
+        margin-right: 10px;
+    }
+
+    .btn-primary {
+        background-color: #fff000;
+        color: white;
+        border: none;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+    }
+
+    .btn-add {
+        background-color: #ff9999;
+        border: none;
+        width: 50%;
+        text-align: center;
+        padding: 10px;
+        border-radius: 15px;
+        margin: 10px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+        .btn-add:hover {
+            background-color: #ff6666;
+            transform: scale(1.05);
+        }
+
+    .button-group {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 5px; /* Расстояние между кнопками */
+    }
+
+</style>
+
+    <a type="button" class="btn btn-add" href="@Url.Action("Create", "Editor")">
+    <i class="fa fa-plus"></i> Add Editor
+</a>
+@foreach (var editor in Model)
+{
+    <div class="editorContent">
+        <p class="comment">@editor.Name</p> <!-- Меняйте 10 на нужное вам количество символов -->
+        <div class="button-group">
+            <a type="button" class="btn btn-info" href="@Url.Action("Detail", "Editor", new { search = editor.Id})">
+                <i class="fa fa-info"></i>
+            </a>
+            <a type="button" class="btn btn-primary" href="@Url.Action("Edit", "Editor", new { id = editor.Id})">
+                <i class="fa fa-pencil"></i>
+            </a>
+            <button type="button" class="btn btn-danger">
+                <i class="fa fa-trash"></i>
+            </button>
+        </div>
+    </div>
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+

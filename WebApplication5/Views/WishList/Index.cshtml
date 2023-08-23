@@ -1,0 +1,144 @@
+﻿@using WebApplication5.ViewModels
+@model List<FavouriteAnime>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    double averageAnimeRating(ICollection<Season> seasons)
+    {
+        double avgSum = 0;
+        int n = 0;
+        @foreach (var season in seasons)
+        {
+            //avgTmp = season.Ratings.Sum(x => x.Mark) / season.Ratings.Count();
+            if (season.Ratings.Count > 0)
+                avgSum += season.Ratings.Average(x => x.Mark);
+            else
+                n++;
+        }
+        return avgSum / (seasons.Count() - n);
+    }
+}
+<style>
+    .anime-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .anime-card {
+        background-color: #f2f2f2;
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+        .anime-card:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+    .anime-image {
+        margin-bottom: 5px;
+        max-width: 100%;
+        border-radius: 5px;
+        max-width: 100%;
+        height: auto;
+        /* Установите требуемые размеры изображения */
+        width: 150px;
+        height: 200px;
+        transition: opacity 0.3s ease;
+    }
+
+    .anime-card:hover .anime-image {
+        opacity: 0.6; /* Затемнение фото при наведении на карточку */
+    }
+
+    .anime-info {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        opacity: 0; /* Сначала скрываем информацию */
+        transition: opacity 0.3s ease;
+    }
+
+    .anime-card:hover .anime-info {
+        opacity: 1; /* Показываем информацию при наведении на карточку */
+    }
+
+    .anime-title {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    .anime-rating {
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .fa-star {
+        color: #f39c12;
+    }
+
+    .checked {
+        color: #f1c40f;
+    }
+
+</style>
+
+<!-- Ваш остальной код остается неизменным -->
+
+<div class="anime-container">
+    @foreach (var anime in Model)
+    {
+        <a onclick="openModal({url: '/Anime/GetAnime', data: '@anime.AnimeName'})" data-toggle="ajax-modal" data-trigger="Modal">
+            <div class="anime-card">
+                <img class="anime-image" src="@anime.Anime.TitleImage" alt="Mimimamomu" title="click me!">
+                <div class="anime-info">
+                    <p class="anime-title">@anime.AnimeName</p>
+                    <p class="anime-title">Seasons | @anime.Anime.Seasons.Count</p>
+                    <p class="anime-title">Episodes | @anime.Anime.Seasons.ElementAt(0).Episodes.Count</p>
+                    <div class="anime-rating">
+                        @if (anime.Anime.Seasons.Any())
+                        {
+                            int averageRating = (int)averageAnimeRating(anime.Anime.Seasons);
+                            for (int i = 1; i <= 5; i++)
+                            {
+                                if (i <= averageRating)
+                                {
+                                    <span class="fa fa-star checked"></span>
+                                }
+                                else
+                                {
+                                    <span class="fa fa-star"></span>
+                                }
+                            }
+
+                            <span style="margin-left: 3px;">(@averageAnimeRating(anime.Anime.Seasons).ToString("0.00"))</span>
+                        }
+                        else
+                        {
+                            for (int i = 1; i <= 5; i++)
+                            {
+                                <span class="fa fa-star"></span>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </a>
+    }
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+

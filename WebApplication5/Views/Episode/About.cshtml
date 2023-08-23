@@ -1,5 +1,9 @@
-﻿@model Episode
+﻿@using System.Security.Claims;
+@model Episode
+@{
+    ViewData["Title"] = "Watch Episode";
 
+}
 <link rel="stylesheet" href="~/css/episode.css">
 
 
@@ -43,20 +47,32 @@
     <h2>Episode Details</h2>
     <p><strong>Episode:</strong> @Model.EpisodeNumber/@Model.Season.Episodes.Count</p>
     <p><strong>Season:</strong> @Model.Season.SeasonTitle</p>
-    <p><strong>Anime:</strong> @Model.Season.Anime.AnimeName</p>
+    <p><strong>Anime:</strong> @Model.Season.AnimeName</p>
+    <p><strong>Editor:</strong> @Model.Season.Anime.Editor.Name</p>
 </div>
 
 <div class="comments">
     <h2>Comments</h2>
-    @foreach (var comment in Model.Comments)
-    {
-        <div class="comment">
-            <span class="comment-author">@comment.User.Nickname:</span>
-            <p>@comment.Message</p>
-        </div>
+    @{
+
+        var loggedInUserId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get the user's ID
+        var newComment = new Comment()
+            {
+                AnimeName = Model.AnimeName,
+                SeasonNumber = Model.SeasonNumber,
+                Episode = Model,
+                AppUserId = loggedInUserId
+            };
+
+        await Html.RenderPartialAsync("_PutComment", newComment);
+
     }
-    <!-- Add more comments as needed -->
+    @{
+
+        await Html.RenderPartialAsync("_Comments", Model.Comments);
+    }
 </div>
+
 
 <!-- Back button to go back to the previous page (you can customize the URL as needed) -->
 <a class="back-button" href="/">Back</a>

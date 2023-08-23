@@ -14,7 +14,7 @@ namespace WebApplication5.Models
 
         [ForeignKey("AnimeName")]
         public virtual Anime? Anime { get; set; }
-        public virtual ICollection<Episode> Episodes { get; set; }
+        public virtual List<Episode> Episodes { get; set; }
         public virtual ICollection<Rating>? Ratings { get; set; }
     }
 }

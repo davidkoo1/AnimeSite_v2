@@ -1,20 +1,18 @@
-﻿@model Episode
+﻿@using WebApplication5.ViewModels;
+@model CreateEpisodeViewModel
 
-<input type="hidden" asp-for="AnimeName" value="@Model.AnimeName" />
-<input type="hidden" asp-for="SeasonNumber" value="@Model.SeasonNumber" />
-<input type="hidden" asp-for="EpisodeNumber" value="@Model.EpisodeNumber" />
-<input type="hidden" asp-for="Season" value="@Model.Season" />
+<input type="hidden" asp-for="AnimeName" />
+<input type="hidden" asp-for="SeasonNumber" />
+<input type="hidden" asp-for="EpisodeNumber" />
 
 <div class="form-group">
-    <label asp-for="EpisodeSrc">Video URL</label>
-    <input asp-for="EpisodeSrc" required>
-    <span asp-validation-for="EpisodeSrc" class="text-danger"></span>
+    <label asp-for="EpisodeSrcUpload">Video File</label>
+    <input asp-for="EpisodeSrcUpload" type="file">
+    <span asp-validation-for="EpisodeSrcUpload" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="EpisodeSrcLink">Video Link</label>
+    <input asp-for="EpisodeSrcLink">
+    <span asp-validation-for="EpisodeSrcLink" class="text-danger"></span>
 </div>
 
-<!-- File input for video upload
-<div class="form-group">
-    <input type="file" id="fileInput" class="file-input" name="VideoFile" accept="video/*">
-    <label for="fileInput" class="file-input-label">Choose Video File</label>
-    <span class="file-name" id="fileName">No file chosen</span>
-</div>
--->

@@ -1,19 +1,35 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication5.Data;
+using WebApplication5.Interfaces;
+using WebApplication5.Models;
 
 namespace WebApplication5.Controllers
 {
     public class CommentController : Controller
     {
-        private readonly DataContext  _dataContext;
-        public CommentController(DataContext dataContext)
+        private readonly ICommentRepository _commentRepository;
+
+        public CommentController(ICommentRepository commentRepository)
         {
-            _dataContext = dataContext;
+            _commentRepository = commentRepository;
         }
-        public IActionResult GetCommentsByEpisode(string AnimeName, int seasonNumber, int episodeNumber)
+        public async Task<IActionResult> GetCommentsByEpisode(string AnimeName, int seasonNumber, int episodeNumber)
         {
-            var comments = _dataContext.Comments.Where(c => c.SeasonNumber == seasonNumber && c.EpisodeNumber == episodeNumber && c.AnimeName == AnimeName).ToList();
+            var comments =  await _commentRepository.GetCommentsByEpisodeAsync(AnimeName, seasonNumber, episodeNumber);
             return PartialView("_Comments", comments);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> EpisodeComment(Comment comment)
+        {
+            if (comment.Message != null)
+            {
+                _commentRepository.Add(comment);
+                return RedirectToAction("About", "Episode", new { animeName = comment.AnimeName, seasonNumber = comment.SeasonNumber, episodeNumber = comment.EpisodeNumber});
+            }
+            return Json("Error");
+        }
+
+
     }
 }

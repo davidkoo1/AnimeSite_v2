@@ -26,3 +26,25 @@
             }
         });
 };
+
+function openLogin(parameters) {
+    const url = parameters.url;
+    const modal = $('#modal');
+
+    if (url == undefined) {
+        alert('Oops...');
+        return;
+    }
+
+    $.ajax({
+        type: 'GET',
+        url: url,
+        success: function (response) {
+            modal.find(".modal-content").html(response);
+            modal.modal('show');
+        },
+        error: function (response) {
+            alert(response.responseText);
+        }
+    });
+}

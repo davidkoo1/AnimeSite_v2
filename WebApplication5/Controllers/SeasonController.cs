@@ -4,15 +4,19 @@ using WebApplication5.Data;
 using WebApplication5.Interfaces;
 using WebApplication5.Models;
 using WebApplication5.Repository;
+using WebApplication5.ViewModels;
 
 namespace WebApplication5.Controllers
 {
     public class SeasonController : Controller
     {
         private readonly ISeasonRepository _seasonRepository;
-        public SeasonController(ISeasonRepository seasonRepository)
+        private readonly IMediaService _mediaService;
+
+        public SeasonController(ISeasonRepository seasonRepository, IMediaService mediaService)
         {
             _seasonRepository = seasonRepository;
+            _mediaService = mediaService;
         }
 
         public async Task<IActionResult> Detail(string animeName, int? seasonNumber)
@@ -30,33 +34,157 @@ namespace WebApplication5.Controllers
         }
         public IActionResult Create(string animeName)
         {
-            Season season = new Season()
+            var seasonN = _seasonRepository.GetSeasonCount(animeName) + 1;
+            CreateSeasonViewModel season = new CreateSeasonViewModel()
             {
+                
                 AnimeName = animeName,
-                SeasonNumber = _seasonRepository.GetSeasonCount(animeName) + 1,
-                Episodes = new List<Episode>()
+                SeasonNumber = seasonN,
+                EpisodeVM = new CreateEpisodeViewModel
                 {
-                    new Episode()
-                    {
                         AnimeName = animeName,
-                        SeasonNumber = _seasonRepository.GetSeasonCount(animeName) + 1,
+                        SeasonNumber = seasonN,
                         EpisodeNumber = 1,
-                    }
                 }
 
             };
             return View(season);
         }
 
+  
         [HttpPost]
-        public async Task<IActionResult> Create(Season season)
+        public async Task<IActionResult> Create(CreateSeasonViewModel seasonVM)
         {
-            if (!ModelState.IsValid)
+            Episode episode = new Episode()
             {
-                return View(season); //Правильно возвр
+                AnimeName = seasonVM.AnimeName,
+                SeasonNumber = seasonVM.SeasonNumber,
+                EpisodeNumber = 1
+            };
+            if (seasonVM.EpisodeVM.EpisodeSrcUpload != null)
+            {
+                var result = await _mediaService.AddVideoAsync(seasonVM.EpisodeVM.EpisodeSrcUpload);
+                episode.EpisodeSrc = result.Url.ToString();
             }
-            _seasonRepository.Add(season);
-            return RedirectToAction("Detail", new { animeName = season.AnimeName });
+            else if(seasonVM.EpisodeVM.EpisodeSrcLink != null)
+            {
+                episode.EpisodeSrc = seasonVM.EpisodeVM.EpisodeSrcLink;
+            }
+            if (seasonVM.SeasonImageSrcUpload != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = await _mediaService.AddPhotoAsync(seasonVM.SeasonImageSrcUpload);
+                    var season = new Season
+                    {
+                        SeasonTitle = seasonVM.SeasonTitle,
+                        AnimeName = seasonVM.AnimeName,
+                        SeasonNumber = seasonVM.SeasonNumber,
+                        SeasonImage = result.Url.ToString(),
+                        Episodes = new List<Episode>()
+                        {
+                            episode
+                        }
+                    };
+                    _seasonRepository.Add(season);
+                    return RedirectToAction("Detail", new { animeName = season.AnimeName });
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Photo upload failed");
+                }
+            }
+            else if (seasonVM.SeasonImageSrcLink != null)
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View("Create", new { animeName = seasonVM.AnimeName });
+                }
+                var season = new Season
+                {
+                    SeasonTitle = seasonVM.SeasonTitle,
+                    AnimeName = seasonVM.AnimeName,
+                    SeasonNumber = seasonVM.SeasonNumber,
+                    SeasonImage = seasonVM.SeasonImageSrcLink,
+                    Episodes = new List<Episode>()
+                        {
+                            episode
+                        }
+                };
+                _seasonRepository.Add(season);
+                return RedirectToAction("Detail", new { animeName = season.AnimeName });
+            }
+
+            return View("Create", new { animeName = seasonVM.AnimeName });
+        }
+
+
+        public async Task<IActionResult> Edit(string animeName, int seasonNumber)
+        {
+            var season = await _seasonRepository.GetSeasonAsync(animeName, seasonNumber);
+            if (season == null)
+                return View("Error");
+            var seasonVM = new EditSeasonViewModel
+            {
+                AnimeName = season.AnimeName,
+                SeasonNumber = season.SeasonNumber,
+                SeasonTitle = season.SeasonTitle,
+                SeasonImageSrcLink = season.SeasonImage
+
+            };
+            return View(seasonVM);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(string animeName, int seasonNumber, EditSeasonViewModel seasonVM)
+        {
+
+            var editSeason = await _seasonRepository.GetSeasonAsyncNoTraking(animeName, seasonNumber);
+            if (editSeason != null)
+            {
+                var season = new Season
+                {
+                    AnimeName = animeName,
+                    SeasonNumber = seasonNumber,
+                    SeasonTitle = seasonVM.SeasonTitle
+                };
+                if (seasonVM.SeasonImageSrcUpload != null)
+                {
+                    try
+                    {
+                        await _mediaService.DeletePhotoAsync(editSeason.SeasonImage);
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("", "Could not delete photo");
+                        return View("Edit", seasonVM);
+                        //return View(editorVM);
+                    }
+
+                    var photoRes = await _mediaService.AddPhotoAsync(seasonVM.SeasonImageSrcUpload);
+                    season.SeasonImage = photoRes.Url.ToString();
+                }
+                else
+                {
+                    try
+                    {
+                        await _mediaService.DeletePhotoAsync(editSeason.SeasonImage);
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("", "Could not delete photo");
+                        return View("Edit", seasonVM);
+                        //return View(editorVM);
+
+                    }
+                    season.SeasonImage = seasonVM.SeasonImageSrcLink;
+                }
+
+                _seasonRepository.Update(season);
+                return RedirectToAction("Detail", new { animeName = season.AnimeName });
+            }
+            else { return View(seasonVM); }
+
         }
     }
 }

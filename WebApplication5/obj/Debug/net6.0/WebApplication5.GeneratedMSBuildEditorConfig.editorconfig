@@ -16,8 +16,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5
 build_property._RazorSourceGeneratorDebug = 
 
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Anime/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWVcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Anime/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWVcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Anime/Index.cshtml]
@@ -28,8 +40,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWVcX0dldEFuaW1lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Comment/_Comments.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudFxfQ29tbWVudHMuY3NodG1s
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Editor/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRpdG9yXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Editor/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRpdG9yXERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Editor/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRpdG9yXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Editor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRpdG9yXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Episode/About.cshtml]
@@ -40,12 +64,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXBpc29kZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Episode/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXBpc29kZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Episode/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXBpc29kZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Genre/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Genre/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Genre/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Home/News.cshtml]
@@ -64,8 +100,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vhc29uXERldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Season/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vhc29uXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Shared/_Comments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Db21tZW50cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Shared/_CreateAnime.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DcmVhdGVBbmltZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Shared/_CreateEpisode.cshtml]
@@ -76,8 +124,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DcmVhdGVTZWFzb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Shared/_EditEpisode.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9FZGl0RXBpc29kZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Shared/_FavouriteAnime.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9GYXZvdXJpdGVBbmltZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Shared/_PutComment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QdXRDb21tZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Shared/_Rating.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9SYXRpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/WishList/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/_ViewImports.cshtml]

@@ -14,7 +14,7 @@ namespace WebApplication5.Repository
         }
         public bool Add(Anime anime)
         {
-            _dataContext.Add(anime);
+            _dataContext.Animes.Add(anime);
             return Save();
         }
         public bool Delete(Anime anime)
@@ -23,15 +23,11 @@ namespace WebApplication5.Repository
             return Save();
         }
 
-        public async Task<IEnumerable<Anime>> GetAllAnime() => await _dataContext.Animes
+        public async Task<IEnumerable<Anime>> GetAllAnime() => await _dataContext.Animes.ToListAsync(); // Жанры || Авторы || Сезоны -> серии -> коменты -> юзеры
+        /*
                  .Include(a => a.Seasons).ThenInclude(s => s.Ratings)
                  .Include(a => a.Editor)
-                 .Include(a => a.AnimeGenres).ThenInclude(ag => ag.Genre).ToListAsync(); // Жанры || Авторы || Сезоны -> серии -> коменты -> юзеры
-
-        public async Task<IEnumerable<Editor>> GetAllEditors() => await _dataContext.Editors.ToListAsync();
-
-        public async Task<IEnumerable<Genre>> GetAllGenres() => await _dataContext.Genres.ToListAsync();
-
+                 .Include(a => a.AnimeGenres).ThenInclude(ag => ag.Genre)*/
         public async Task<IEnumerable<Anime>> GetAnimeByEditor(string Editor) => await _dataContext.Animes
             .Where(e => e.Editor.Name.Contains(Editor)).ToListAsync();
         
@@ -39,14 +35,16 @@ namespace WebApplication5.Repository
         public async Task<IEnumerable<Anime>> GetAnimeByGenres(string[] genres)
         {
             var query = _dataContext.Animes
-                .Where(a => a.AnimeGenres.Any(ag => genres.Contains(ag.Genre.Name)))
+                .Where(a => a.AnimeGenres.Any(ag => genres.Contains(ag.Genre.Name)))/*
                 .Include(a => a.AnimeGenres)
-                .ThenInclude(ag => ag.Genre);
+                .ThenInclude(ag => ag.Genre)*/;
 
             return await query.ToListAsync();
         }
 
-        public async Task<Anime> GetByNameAsync(string AnimeName) => await _dataContext.Animes.Include(a => a.Seasons).FirstOrDefaultAsync(i => i.AnimeName == AnimeName);
+        public async Task<Anime> GetByNameAsync(string AnimeName) => await _dataContext.Animes/*.Include(a => a.Seasons)*/.FirstOrDefaultAsync(i => i.AnimeName == AnimeName);
+
+        public async Task<Anime> GetByNameAsyncNoTraking(string AnimeName) => await _dataContext.Animes.AsNoTracking().FirstOrDefaultAsync(a => a.AnimeName == AnimeName);
 
         public bool Save() => _dataContext.SaveChanges() > 0 ? true : false;
 

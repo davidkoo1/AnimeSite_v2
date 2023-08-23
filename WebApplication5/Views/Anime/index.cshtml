@@ -1,21 +1,12 @@
-﻿<!--model List<Anime>
-
-<h1>All Anime</h1>
-
-<ul>
-    foreach (var anime in Model)
-    {
-        <li>
-            <a href="Url.Action("Detail", "Anime", new { animeName = anime.Title })">anime.Title</a>
-        </li>
-    }
-</ul>
--->
-@model IEnumerable<Anime>
+﻿@model IEnumerable<Anime>
 @*
 
 *@
+@{
+    ViewData["Title"] = "Home";
+}
 
+<link rel="stylesheet" href="~/css/anime.css">
 @{
     double averageAnimeRating(ICollection<Season> seasons)
     {
@@ -33,59 +24,172 @@
     }
 }
 
-<div class="grid">
-    @foreach (var anime in Model)
-    {
-        <a onclick="openModal({url: '/Anime/GetAnime', data: '@anime.AnimeName'})" data-toggle="ajax-modal" data-trigger="Modal">
-            <div class="content flow">
+
+<div class="main-section">
+    <!--Колонка 1-->
+    @*
+    <div class="left-column">
+        <!-- Колонка 1: Навигация и фильтры -->
+        <div class="navInfo-left">
+            @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+            {
+                <div class="createModel">
+                    <a href="@Url.Action("Create", "Anime")" class="create-button">Create New Anime</a>
+                </div>
+            }
+
+            <p>
+                Filter <span id="fold"></span>
+                <ul id="list">
+                    <li>Жанры</li>
+                    <li>Авторы</li>
+                    <li>Дата</li>
+                    <li>Рейтинг(шкала)</li>
+                </ul>
+            </p>
+            <p>Последние действия</p>
+            <p>
+                Favourite <span id="fold"></span>
+                <ul id="list">
+                    <li>A</li>
+                    <li>B</li>
+                    <li>C</li>
+                </ul>
+            </p>
+            <!-- дополнительные элементы навигации и фильтров -->
+        </div>
+    </div>
+    *@
+    <!--Колонка 2-->
+    <div class="center-column">
+
+        <div class="grid">
+            @foreach (var anime in Model.OrderByDescending(x => x.Seasons[x.Seasons.Count - 1].Episodes[x.Seasons[x.Seasons.Count - 1].Episodes.Count - 1].ReleaseEpisode))
+            {
+                <a onclick="openModal({url: '/Anime/GetAnime', data: '@anime.AnimeName'})" data-toggle="ajax-modal" data-trigger="Modal">
+                    <div class="content flow">
 
 
-                <img src="@anime.TitleImage" alt="Mimimamomu" title="click me!">
+                        <img src="@anime.TitleImage" alt="Mimimamomu" title="click me!">
 
-                <p class="title"><strong>@anime.AnimeName</strong></p>
+                        <p class="title"><strong>@anime.AnimeName</strong></p>
 
 
-                <div class="rating">
-                    @if (anime.Seasons.Any())
-                    {
-                        int averageRating = (int)averageAnimeRating(anime.Seasons);
-                        for (int i = 1; i <= 5; i++)
-                        {
-                            if (i <= averageRating)
+                        <div class="rating">
+                            @if (anime.Seasons.Any())
                             {
-                                <span class="fa fa-star checked"></span>
+                                int averageRating = (int)averageAnimeRating(anime.Seasons);
+                                for (int i = 1; i <= 5; i++)
+                                {
+                                    if (i <= averageRating)
+                                    {
+                                        <span class="fa fa-star checked"></span>
+                                    }
+                                    else
+                                    {
+                                        <span class="fa fa-star"></span>
+                                    }
+                                }
+
+                                <span style="margin-left: 3px;">(@averageAnimeRating(anime.Seasons).ToString("0.00"))</span>
+
                             }
                             else
                             {
-                                <span class="fa fa-star"></span>
+                                for (int i = 1; i <= 5; i++)
+                                {
+                                    <span class="fa fa-star"></span>
+                                }
                             }
-                        }
+                        </div>
+                    </div>
+                </a>
+            }
 
-                        <span style="margin-left: 3px;">(@averageAnimeRating(anime.Seasons).ToString("0.00"))</span>
+        </div>
+    </div>
+    @*
+    <!--Колонка 3-->
+    @if (User.Identity.IsAuthenticated)
+    {
 
-                    }
-                    else
-                    {
-                        for (int i = 1; i <= 5; i++)
-                        {
-                            <span class="fa fa-star"></span>
-                        }
-                    }
-                </div>
-                <ul>
+        <div class="top-layer">
+            <p>Последние действия</p>
+        </div>
+        <div class="right-column">
 
-                    @foreach (var genre in anime.AnimeGenres)
-                    {
-                        <li>@genre.Genre.Name</li>
-                    }
-                </ul>
+            @foreach (var anime in Model.OrderByDescending(x => x.Seasons[x.Seasons.Count - 1].Episodes[x.Seasons[x.Seasons.Count - 1].Episodes.Count - 1].ReleaseEpisode))
+            {
+                <a onclick="openModal({url: '/Anime/GetAnime', data: '@anime.AnimeName'})" data-toggle="ajax-modal" data-trigger="Modal">
+                    <div class="content flow">
 
 
-            </div>
-        </a>
+                        <img src="@anime.TitleImage" alt="Mimimamomu" title="click me!">
+
+                        <p class="title"><strong>@anime.AnimeName</strong></p>
+
+
+                        <div class="rating">
+                            @if (anime.Seasons.Any())
+                            {
+                                int averageRating = (int)averageAnimeRating(anime.Seasons);
+                                for (int i = 1; i <= 5; i++)
+                                {
+                                    if (i <= averageRating)
+                                    {
+                                        <span class="fa fa-star checked"></span>
+                                    }
+                                    else
+                                    {
+                                        <span class="fa fa-star"></span>
+                                    }
+                                }
+
+                                <span style="margin-left: 3px;">(@averageAnimeRating(anime.Seasons).ToString("0.00"))</span>
+
+                            }
+                            else
+                            {
+                                for (int i = 1; i <= 5; i++)
+                                {
+                                    <span class="fa fa-star"></span>
+                                }
+                            }
+                        </div>
+                        <ul class="genre-list">
+                            @foreach (var genre in anime.AnimeGenres)
+                            {
+                                <li class="genre-item">@genre.Genre.Name</li>
+                            }
+                        </ul>
+
+
+                    </div>
+                </a>
+            }
+        </div>
+        <div class="bottom-layer" />
     }
+    *@
 </div>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
+<script>
+    var list = document.getElementById("list");
+    var fold = document.getElementById("fold");
+
+    var open = function () {
+        fold.innerHTML = '▼';
+        list.style.display = 'block';
+        fold.onclick = close;
+    };
+    var close = function () {
+        fold.innerHTML = '◀';
+        list.style.display = 'none';
+        fold.onclick = open;
+    };
+
+    close();
+</script>

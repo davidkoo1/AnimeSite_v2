@@ -5,14 +5,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication5.Models
 {
-    [PrimaryKey("AnimeName", "SeasonNumber", "UserId")]
+    [PrimaryKey("AnimeName", "SeasonNumber", "AppUserId")]
     public class Rating 
     {
         public string AnimeName { get; set; }
         public int SeasonNumber { get; set; }
 
         [ForeignKey("User")]
-        public Guid UserId { get; set; }
+        public string? AppUserId { get; set; }
 
         public int Mark { get; set; }
 

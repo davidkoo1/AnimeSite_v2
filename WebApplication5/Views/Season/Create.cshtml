@@ -1,5 +1,8 @@
-﻿@model Season
-
+﻿@using WebApplication5.ViewModels;
+@model CreateSeasonViewModel
+@{
+    ViewData["Title"] = "New Season";
+}
 <style>
     body {
         background-color: #f5f5f5;
@@ -91,7 +94,7 @@
 <h1>Create New Season</h1>
 
 <div class="form-container">
-    <form method="post" asp-action="Create">
+    <form method="post" asp-action="Create" enctype="multipart/form-data">
         @{
             await Html.RenderPartialAsync("_CreateSeason", Model);
         }

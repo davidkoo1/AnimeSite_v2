@@ -23,6 +23,8 @@
     column-gap: var(--gap);
 }
 
+
+
     .grid > * {
         break-inside: avoid;
         margin-bottom: var(--gap);
@@ -98,27 +100,31 @@ a {
 img {
     margin-bottom: 5px;
     max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
     border-radius: 5px;
+    width: 100%;
 }
-
+.image-wrapper {
+    margin-bottom: 5px;
+    max-width: 100%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+}
 .content {
     padding: 7px;
-    box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s, transform 0.5s ease;
     background: white;
-    border-radius: 15px;
-    break-inside: avoid;
-    /*
-    box-shadow: 1px 1px 10px rgba(10, 10, 10, 0.8);
-    border-radius: 5px;
-    overflow: hidden;
-    margin-bottom: 40px;
     background-color: #fff;
-    transition: background-color 0.3s, transform 0.5s ease;
+    border-radius: 8px;
+    break-inside: avoid;
+    margin: 10px 0px;
+    align-items: center; /* Center horizontally */
     display: flex;
     flex-direction: column;
-    */
 }
+
 
     .content:hover {
         transform: translateY(-5px);
@@ -157,6 +163,7 @@ a.navbar-brand {
     color: #fff;
     background-color: #1b6ec2;
     border-color: #1861ac;
+    cursor: pointer;
 }
 
 /* Sticky footer styles
@@ -164,78 +171,91 @@ a.navbar-brand {
 html {
     font-size: 14px;
 }
+@media (max-width: 767px) {
+    /* Стили для мобильных устройств */
 
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
+    /* Общие стили для .grid */
+    .grid {
+        --columns: 1; /* Один столбец на мобильных устройствах */
+    }
+
+    .center-column {
+        width: 100%; /* Ширина на всю ширину экрана */
+        margin: 0; /* Убрать отступы */
     }
 }
 
-.border-top {
-    border-top: 1px solid #e5e5e5;
-}
 
-.border-bottom {
-    border-bottom: 1px solid #e5e5e5;
-}
 
-.box-shadow {
-    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
+    .border-top {
+        border-top: 1px solid #e5e5e5;
+    }
 
-button.accept-policy {
-    font-size: 1rem;
-    line-height: inherit;
-}
+    .border-bottom {
+        border-bottom: 1px solid #e5e5e5;
+    }
 
-/* Sticky footer styles
+    .box-shadow {
+        box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    }
+
+    button.accept-policy {
+        font-size: 1rem;
+        line-height: inherit;
+    }
+
+    /* Sticky footer styles
 -------------------------------------------------- */
-html {
-    position: relative;
-    min-height: 100%;
-}
+    html {
+        position: relative;
+        min-height: 100%;
+    }
 
-body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
-}
+    body {
+        /* Margin bottom by footer height */
+        margin-bottom: 60px;
+    }
 
-p {
-    font-family: 'Nunito', sans-serif;
-}
+    p {
+        font-family: 'Nunito', sans-serif;
+    }
 
-h1 {
-    font-family: 'Nunito', sans-serif;
-}
+    h1 {
+        font-family: 'Nunito', sans-serif;
+    }
 
-ul {
-    font-family: 'Nunito', sans-serif;
-}
+    ul {
+        font-family: 'Nunito', sans-serif;
+    }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    white-space: nowrap;
-    line-height: 60px; /* Vertically center the text there */
-    font-family: 'Nunito', sans-serif;
-}
-/*Backgrounds*/
-.bg-navbar {
-    background: -webkit-linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
-    background: -o-linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
-    background: -moz-linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
-    background: linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
-}
-
-.bg-footer {
-    background: -webkit-linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
-    background: -o-linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
-    background: -moz-linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
-    background: linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
-}
+    .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        line-height: 60px;
+        font-family: 'Nunito', sans-serif;
+        background-color: #252152;
+        color: #fff;
+        text-align: center;
+    }
 
 
-/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+    /*Backgrounds*/
+    .bg-navbar {
+        background: -webkit-linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
+        background: -o-linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
+        background: -moz-linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
+        background: linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
+    }
+
+    .bg-footer {
+        background: -webkit-linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
+        background: -o-linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
+        background: -moz-linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
+        background: linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
+    }
+
+
+    /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 

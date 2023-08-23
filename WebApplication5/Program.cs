@@ -1,7 +1,12 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebApplication5.Data;
+using WebApplication5.Helpers;
 using WebApplication5.Interfaces;
+using WebApplication5.Models;
 using WebApplication5.Repository;
+using WebApplication5.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,15 +15,47 @@ builder.Services.AddRazorPages();
 builder.Services.AddControllers();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddControllersWithViews();
+
 builder.Services.AddScoped<IAnimeRepository, AnimeRepository>();
 builder.Services.AddScoped<ISeasonRepository, SeasonRepository>();
 builder.Services.AddScoped<IEpisodeRepository, EpisodeRepository>();
+builder.Services.AddScoped<IEditorRepository, EditorRepository>();
+builder.Services.AddScoped<IGenreRepository, GenreRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<IRatingRepository, RatingRepository>();
+builder.Services.AddScoped<IWishListRepository, WishListRepository>();
+
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
+builder.Services.AddScoped<IMediaService, MediaService>();
+
 builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+{
+    // Password settings
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 9; // Minimum length
+    options.Password.RequireLowercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = true;
+}).AddEntityFrameworkStores<DataContext>();
+builder.Services.AddMemoryCache();
+builder.Services.AddSession();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+       .AddCookie();
+
 
 var app = builder.Build();
+
+/*
+if (args.Length == 1 && args[0].ToLower() == "seeddata")
+{
+   await Seed.SeedUsersAndRolesAsync(app);
+    //Seed.SeedData(app);
+}
+*/
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -35,6 +72,10 @@ app.UseRouting();
 
 app.UseAuthorization();
 app.MapRazorPages();
+app.MapControllers();
+app.MapBlazorHub();
+app.UseAuthentication();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Anime}/{action=Index}/{id?}");

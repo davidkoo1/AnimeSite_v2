@@ -1,4 +1,8 @@
-﻿@model Episode
+﻿@using WebApplication5.ViewModels;
+@model CreateEpisodeViewModel
+@{
+    ViewData["Title"] = "New Episode";
+}
 
 <style>
     body {
@@ -59,6 +63,7 @@
         .submit-button:hover {
             background-color: #ff9999;
         }
+
     .file-input {
         display: none;
     }
@@ -89,18 +94,12 @@
 <h1>Add new Episode</h1>
 
 <div class="form-container">
-    <form method="post" asp-action="Create">
-        @{await Html.RenderPartialAsync("_CreateEpisode", Model);}
+    <form method="post" asp-action="Create" enctype="multipart/form-data">
+        @{
+            
+            await Html.RenderPartialAsync("_CreateEpisode", Model);
+        }
         <button type="submit" class="submit-button">Create</button>
     </form>
 </div>
 
-<!--
-<script>
-    // JavaScript to display the selected file name
-    document.getElementById('fileInput').addEventListener('change', function () {
-        var fileName = document.getElementById('fileInput').files[0].name;
-        document.getElementById('fileName').innerText = fileName;
-    });
-</script>
--->

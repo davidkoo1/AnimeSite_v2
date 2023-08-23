@@ -1,0 +1,48 @@
+﻿@using System.Security.Claims;
+@model Rating
+<div class="rating">
+    @{
+         double averageRating = Model.Season.Ratings.Count > 0 ? Model.Season.Ratings.Average(x => x.Mark) : 0;
+        
+    }
+    <form method="post" asp-controller="Rating" asp-action="SeasonRating">
+        <input type="hidden" asp-for="AnimeName" />
+        <input type="hidden" asp-for="SeasonNumber" />
+        <input type="hidden" asp-for="AppUserId" />
+
+        @for (int i = 1; i <= 5; i++)
+        {
+            if (i <= averageRating)
+            {
+                <label class="star-label">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <input type="submit" class="star-icon visually-hidden" value="@i" asp-for="Mark" />
+                    }
+                    <span class="fa fa-star checked"></span>
+                </label>
+            }
+            else
+            {
+                <label class="star-label">
+                    @if (User.Identity.IsAuthenticated)//иначе всплывающее окно рег формы
+                    {
+                        <input type="submit" class="star-icon visually-hidden" value="@i" asp-for="Mark" />
+                    }
+                    <span class="fa fa-star"></span>
+                </label>
+            }
+        }
+    </form>
+
+    @{
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get the user's ID
+        var userRating = Model.Season.Ratings.FirstOrDefault(r => r.AppUserId == userId);
+
+        if (userRating != null)
+        {
+            <p>Your Mark: @userRating.Mark</p>
+        }
+    }
+</div>
+

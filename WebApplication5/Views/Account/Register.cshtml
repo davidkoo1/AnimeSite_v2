@@ -1,0 +1,96 @@
+﻿@using WebApplication5.ViewModels
+@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Sign up";
+}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    /* Ваш стиль */
+    body {
+        background-color: #fff;
+    }
+
+    .register-container {
+        background-color: #343a40;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        margin-top: 100px;
+    }
+
+    .register-header {
+        color: #f8f8f8;
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        border-radius: 10px;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+        transition: background-color 0.3s;
+    }
+
+        .btn-success:hover {
+            background-color: #1d7d32;
+        }
+
+    .btn-outline-secondary {
+        border-radius: 10px;
+    }
+
+    .control-label {
+        color: #fff;
+    }
+</style>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Sorry!</strong> - @TempData["Error"]
+    </div>
+}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 register-container">
+            <h1 class="register-header">Sign up</h1>
+
+
+            <form asp-action="Register">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label">NickName</label>
+                    <input asp-for="UserName" class="form-control" placeholder="NickName" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label">Email Address</label>
+                    <input type="email" asp-for="Email" class="form-control" placeholder="Email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label">Password</label>
+                    <input type="password" asp-for="Password" class="form-control" placeholder="Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="control-label">Confirm Password</label>
+                    <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group text-center">
+                    <button class="btn btn-success" type="submit">Sign up</button>
+                    <a class="btn btn-outline-secondary" asp-controller="Anime" asp-action="Index">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

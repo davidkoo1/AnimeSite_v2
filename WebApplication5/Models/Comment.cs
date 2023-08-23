@@ -5,9 +5,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication5.Models
 {
-    [PrimaryKey("AnimeName", "UserId", "SeasonNumber", "EpisodeNumber")]
     public class Comment
     {
+        [Key, Column(Order = 1)]
+        public Guid CommentId { get; set; } = Guid.NewGuid();
         
         public string AnimeName { get; set; }
         
@@ -16,7 +17,7 @@ namespace WebApplication5.Models
         public int EpisodeNumber { get; set; }
 
         [ForeignKey("User")]
-        public Guid UserId { get; set; }
+        public string? AppUserId { get; set; }
 
         public string Message { get; set; }
         public DateTime? Date { get; set; } = DateTime.Now;

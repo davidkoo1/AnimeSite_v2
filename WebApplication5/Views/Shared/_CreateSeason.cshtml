@@ -1,11 +1,10 @@
-﻿@model Season
-<!--
+﻿@using WebApplication5.ViewModels;
+@model CreateSeasonViewModel
+
 <input type="hidden" asp-for="AnimeName" />
 <input type="hidden" asp-for="SeasonNumber" />
--->
-<input type="hidden" asp-for="AnimeName" value="@Model.AnimeName" />
-<input type="hidden" asp-for="SeasonNumber" value="@Model.SeasonNumber" />
-<input type="hidden" asp-for="Episodes" value="@Model.Episodes" />
+<!--<input type="hidden" asp-for="Episodes" />-->
+
 
 
 <div class="form-group">
@@ -15,15 +14,20 @@
 </div>
 
 <div class="form-group">
-    <label asp-for="SeasonImage">Image</label>
-    <input asp-for="SeasonImage" required>
-    <span asp-validation-for="SeasonImage" class="text-danger"></span>
+    <label asp-for="SeasonImageSrcUpload">ImageFile</label>
+    <input asp-for="SeasonImageSrcUpload" type="file">
+    <span asp-validation-for="SeasonImageSrcUpload" class="text-danger"></span>
 </div>
+<div class="form-group">
+    <label asp-for="SeasonImageSrcLink">Image Link</label>
+    <input asp-for="SeasonImageSrcLink">
+    <span asp-validation-for="SeasonImageSrcLink" class="text-danger"></span>
+</div>
+    
+@{
 
-
-    @{
-        await Html.RenderPartialAsync("_CreateEpisode", Model.Episodes.ElementAt(0));
-    }
+}
+<partial name="_CreateEpisode" for="EpisodeVM" />
 
 <!--
 <div class="form-group">
