@@ -2,8 +2,8 @@
 @model Rating
 <div class="rating">
     @{
-         double averageRating = Model.Season.Ratings.Count > 0 ? Model.Season.Ratings.Average(x => x.Mark) : 0;
-        
+        double averageRating = Model.Season.Ratings.Count > 0 ? Model.Season.Ratings.Average(x => x.Mark) : 0;
+
     }
     <form method="post" asp-controller="Rating" asp-action="SeasonRating">
         <input type="hidden" asp-for="AnimeName" />
@@ -38,11 +38,19 @@
     @{
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get the user's ID
         var userRating = Model.Season.Ratings.FirstOrDefault(r => r.AppUserId == userId);
-
-        if (userRating != null)
+        @if (User.Identity.IsAuthenticated)
         {
-            <p>Your Mark: @userRating.Mark</p>
+
+            if (userRating != null)
+            {
+                <p>Your Mark: @userRating.Mark</p>
+            }
+            else
+            {
+                <p><strong style="color: #ff6666">Не забудь поставить оценку!</strong></p>
+            }
         }
+      
     }
 </div>
 

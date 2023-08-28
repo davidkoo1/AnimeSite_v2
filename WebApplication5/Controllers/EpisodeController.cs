@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 using WebApplication5.Data;
 using WebApplication5.Interfaces;
 using WebApplication5.Models;
@@ -22,7 +23,7 @@ namespace WebApplication5.Controllers
         public async Task<IActionResult> Index(string animeName, int seasonNumber)
         {
             IEnumerable<Episode> episodes = await _episodeRepository.GetAllEpisodesBySeason(animeName, seasonNumber);
-            return View(episodes);
+            return View(episodes.OrderBy(x => x.EpisodeNumber));
         }
 
         public async Task<IActionResult> About(string animeName, int seasonNumber, int episodeNumber)
@@ -42,7 +43,7 @@ namespace WebApplication5.Controllers
             };
             return View(episodeVM);
         }
-
+        
         [HttpPost]
         public async Task<IActionResult> Create(CreateEpisodeViewModel episodeVM)
         {
@@ -86,8 +87,55 @@ namespace WebApplication5.Controllers
 
             return View("Create", new { animeName = episodeVM.AnimeName, seasonNumber = episodeVM.SeasonNumber });
         }
+        
 
-        public async Task<IActionResult> Edit(string animeName, int seasonNumber, int episodeNumber)
+        /*
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateEpisodeViewModel episodeVM)
+        {
+            if (episodeVM.EpisodeSrcUpload != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    // Загрузка видео
+                    var result = await _videoService.AddVideoAsync(episodeVM.EpisodeSrcUpload);
+
+                    if (result.StatusCode == HttpStatusCode.OK) // Проверка успешной загрузки
+                    {
+                        var episode = new Episode
+                        {
+                            AnimeName = episodeVM.AnimeName,
+                            SeasonNumber = episodeVM.SeasonNumber,
+                            EpisodeNumber = episodeVM.EpisodeNumber,
+                            EpisodeSrc = result.Url.ToString()
+                        };
+                        _episodeRepository.Add(episode);
+                        return RedirectToAction("Index", new { animeName = episode.AnimeName, seasonNumber = episode.SeasonNumber });
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Video upload failed");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid model state");
+                }
+            }
+
+            // В случае, если загрузка не удалась или модель недопустима,
+            // возвращаем пользователя на страницу создания с подробностями об ошибках
+            return View("Create", episodeVM);
+        }
+
+        // ... другие действия контроллера
+    
+        */
+
+
+
+
+    public async Task<IActionResult> Edit(string animeName, int seasonNumber, int episodeNumber)
         {
             var episode = await _episodeRepository.GetEpisodeAsync(animeName, seasonNumber, episodeNumber);
             if (episode == null)
@@ -153,6 +201,26 @@ namespace WebApplication5.Controllers
             }
             else { return View(episodeVM); }
 
+        }
+
+        public async Task<IActionResult> Delete(string animeName, int seasonNumber, int episodeNumber)
+        {
+            var episodeDetail = await _episodeRepository.GetEpisodeAsync(animeName, seasonNumber, episodeNumber);
+            if (episodeDetail == null)
+                return View("Error");
+            return View(episodeDetail);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteEditor(string animeName, int seasonNumber, int episodeNumber)
+        {
+            var episodeDetail = await _episodeRepository.GetEpisodeAsync(animeName, seasonNumber, episodeNumber);
+            if (episodeDetail == null)
+                return View("Error");
+
+            _episodeRepository.Delete(episodeDetail);
+            return RedirectToAction("Index", new { animeName = episodeDetail.AnimeName, 
+                seasonNumber = episodeDetail.SeasonNumber });
         }
     }
 }

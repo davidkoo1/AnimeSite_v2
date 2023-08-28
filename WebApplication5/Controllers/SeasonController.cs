@@ -30,28 +30,40 @@ namespace WebApplication5.Controllers
             }
             */
             ViewBag.SelectSeason = seasonNumber;
-            return View("Detail", seasons);
+            var sortedSeasons = seasons
+    .OrderBy(x => x.SeasonNumber >= 0 ? x.SeasonNumber : int.MaxValue)
+    .ThenByDescending(x => x.SeasonNumber < 0 ? x.SeasonNumber : int.MinValue)
+    .ToList();
+            /*
+             например в массиве
+                1 -1 2 3 -2
+                мы поличим
+                1 2 3 -1 -2
+            */
+
+            return View("Detail", sortedSeasons);
+
         }
         public IActionResult Create(string animeName)
         {
             var seasonN = _seasonRepository.GetSeasonCount(animeName) + 1;
             CreateSeasonViewModel season = new CreateSeasonViewModel()
             {
-                
+
                 AnimeName = animeName,
                 SeasonNumber = seasonN,
                 EpisodeVM = new CreateEpisodeViewModel
                 {
-                        AnimeName = animeName,
-                        SeasonNumber = seasonN,
-                        EpisodeNumber = 1,
+                    AnimeName = animeName,
+                    SeasonNumber = seasonN,
+                    EpisodeNumber = 1,
                 }
 
             };
             return View(season);
         }
 
-  
+
         [HttpPost]
         public async Task<IActionResult> Create(CreateSeasonViewModel seasonVM)
         {
@@ -66,7 +78,7 @@ namespace WebApplication5.Controllers
                 var result = await _mediaService.AddVideoAsync(seasonVM.EpisodeVM.EpisodeSrcUpload);
                 episode.EpisodeSrc = result.Url.ToString();
             }
-            else if(seasonVM.EpisodeVM.EpisodeSrcLink != null)
+            else if (seasonVM.EpisodeVM.EpisodeSrcLink != null)
             {
                 episode.EpisodeSrc = seasonVM.EpisodeVM.EpisodeSrcLink;
             }
@@ -185,6 +197,25 @@ namespace WebApplication5.Controllers
             }
             else { return View(seasonVM); }
 
+        }
+
+        public async Task<IActionResult> Delete(string animeName, int seasonNumber)
+        {
+            var seasonDetail = await _seasonRepository.GetSeasonAsync(animeName, seasonNumber);
+            if (seasonDetail == null)
+                return View("Error");
+            return View(seasonDetail);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteSeason(string animeName, int seasonNumber)
+        {
+            var seasonDetail = await _seasonRepository.GetSeasonAsync(animeName, seasonNumber);
+            if (seasonDetail == null)
+                return View("Error");
+
+            _seasonRepository.Delete(seasonDetail);
+            return RedirectToAction("Detail", new { animeName = seasonDetail.AnimeName });
         }
     }
 }

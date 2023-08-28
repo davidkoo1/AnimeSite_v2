@@ -81,6 +81,9 @@
           }
         }
       },
+      "dropzone/4.3.0": {
+        "type": "package"
+      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -2092,6 +2095,25 @@
         "lib/netstandard1.3/CloudinaryDotNet.xml",
         "lib/netstandard2.0/CloudinaryDotNet.dll",
         "lib/netstandard2.0/CloudinaryDotNet.xml"
+      ]
+    },
+    "dropzone/4.3.0": {
+      "sha512": "erwoK0GJ+gDfphtbBOjUkdoe/MBDbTVwd2DvvgNdULgJmZvOHrnbZQJH6GnbMXf9wa463sASZG102ZYbSw+e/Q==",
+      "type": "package",
+      "path": "dropzone/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/Scripts/dropzone/basic.css",
+        "content/Scripts/dropzone/basic.min.css",
+        "content/Scripts/dropzone/dropzone-amd-module.js",
+        "content/Scripts/dropzone/dropzone-amd-module.min.js",
+        "content/Scripts/dropzone/dropzone.css",
+        "content/Scripts/dropzone/dropzone.js",
+        "content/Scripts/dropzone/dropzone.min.css",
+        "content/Scripts/dropzone/dropzone.min.js",
+        "dropzone.4.3.0.nupkg.sha512",
+        "dropzone.nuspec"
       ]
     },
     "Humanizer.Core/2.14.1": {
@@ -6024,7 +6046,8 @@
       "Microsoft.EntityFrameworkCore.Relational >= 7.0.9",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.9",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.9",
-      "Newtonsoft.Json >= 13.0.3"
+      "Newtonsoft.Json >= 13.0.3",
+      "dropzone >= 4.3.0"
     ]
   },
   "packageFolders": {
@@ -6114,6 +6137,10 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.3, )"
+          },
+          "dropzone": {
+            "target": "Package",
+            "version": "[4.3.0, )"
           }
         },
         "imports": [

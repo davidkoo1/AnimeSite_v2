@@ -25,6 +25,8 @@ namespace WebApplication5.Repository
             return Save();
         }
 
+        public async Task<Comment> GetCommentById(Guid id) => await _dataContext.Comments.FirstOrDefaultAsync(x => x.CommentId == id);
+
         public async Task<IEnumerable<Comment>> GetCommentsByEpisodeAsync(string AnimeName, int seasonNumber, int episodeNumber) => await _dataContext.Comments.Where(c => c.SeasonNumber == seasonNumber && c.EpisodeNumber == episodeNumber && c.AnimeName == AnimeName).ToListAsync();
 
         public bool Save() => _dataContext.SaveChanges() > 0 ? true : false;

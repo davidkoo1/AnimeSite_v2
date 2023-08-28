@@ -97,6 +97,12 @@
         align-items: flex-end;
         gap: 5px; /* Расстояние между кнопками */
     }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+    }
 </style>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 <div class="episodeContent">
@@ -116,6 +122,13 @@
                             seasonNumber = episode.SeasonNumber, episodeNumber = episode.EpisodeNumber})">
                                 <i class="fa fa-pencil"></i>
                             </a>
+                            if (Model.Count() > 1)
+                            {
+                                <a type="button" class="btn btn-danger" href="@Url.Action("Delete", "Episode", new { animeName = episode.AnimeName,
+                            seasonNumber = episode.SeasonNumber, episodeNumber = episode.EpisodeNumber})">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            }
                         }
                         <a href="@Url.Action("About", "Episode", new { animeName = episode.AnimeName, seasonNumber = episode.SeasonNumber, episodeNumber = episode.EpisodeNumber })" class="episode-button">Watch</a>
                     </div>

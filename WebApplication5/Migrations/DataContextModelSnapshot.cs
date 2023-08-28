@@ -176,7 +176,6 @@ namespace WebApplication5.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Trailer")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("AnimeName");

@@ -50,6 +50,14 @@ namespace WebApplication5.Repository
 
         public bool Update(Anime anime)
         {
+            var genres = _dataContext.AnimeGenres.Where(x => x.AnimeName == anime.AnimeName).ToList();
+            if(genres.Count > 0)
+             foreach(var genre in genres)
+                 _dataContext.AnimeGenres.Remove(genre);
+            if(anime.AnimeGenres.Count > 0)
+                foreach(var genre in anime.AnimeGenres)
+                    _dataContext.AnimeGenres.Add(genre);
+
             _dataContext.Update(anime);
             return Save();
         }

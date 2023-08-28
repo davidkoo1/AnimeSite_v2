@@ -21,7 +21,15 @@ namespace WebApplication5.Repository
 
         public bool Delete(Editor editor)
         {
-            _dataContext.Remove(editor);
+            /*var animes = _dataContext.Animes.Where(x => x.EditorId == editor.Id).ToList();
+            foreach (var anime in animes) 
+            {
+                anime.EditorId = null;
+                _dataContext.Animes.Update(anime);
+            }
+            */
+
+            _dataContext.Editors.Remove(editor);
             return Save();
         }
 

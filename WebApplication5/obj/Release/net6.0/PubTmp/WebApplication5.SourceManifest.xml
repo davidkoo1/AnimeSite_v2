@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\obj\Release\net6.0\PubTmp\Out\" />
+  <dbfullsql path="R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\obj\Release\net6.0\PubTmp\EFSQLScripts\WebApplication5.Data.DataContext.sql" />
+</sitemanifest>

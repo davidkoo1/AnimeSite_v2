@@ -50,6 +50,7 @@ namespace WebApplication5.Controllers
                     var result = await _photoService.AddPhotoAsync(editorVM.Image);
                     var editor = new Editor
                     {
+                        Id = editorVM.Id,
                         Name = editorVM.Name,
                         Description = editorVM.Description,
                         Image = result.Url.ToString()
@@ -140,6 +141,25 @@ namespace WebApplication5.Controllers
             }
             else { return View(editorVM); }
 
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var editorDetail = await _editorRepository.GetEditorById(id);
+            if (editorDetail == null)
+                return View("Error");
+            return View(editorDetail);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteEditor(int id)
+        {
+            var editorDetail = await _editorRepository.GetEditorById(id);
+            if (editorDetail == null)
+                return View("Error");
+
+            _editorRepository.Delete(editorDetail);
+            return RedirectToAction("Index");
         }
     }
 }

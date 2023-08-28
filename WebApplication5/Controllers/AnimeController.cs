@@ -17,7 +17,7 @@ namespace WebApplication5.Controllers
         private readonly IGenreRepository _genreRepository;
         private readonly IWishListRepository _wishListRepository;
         private readonly IMediaService _mediaService;
-        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IHttpContextAccessor _httpContextAccessor; 
         public AnimeController(IAnimeRepository animeRepository, 
             IEditorRepository editorRepository, 
             IGenreRepository genreRepository, 
@@ -212,7 +212,7 @@ namespace WebApplication5.Controllers
             return View(animeVM);
         }
        
-        [HttpPost]
+        [HttpPost] //сделать чтобы был PK-Anime, чтобы можно было редачить и имя, сделать чтобы у жанров стояла галочка при изменении
         public async Task<IActionResult> Edit(string animeName, EditAnimeViewModel animeVM, int[] selectedGenres)
         {
 
@@ -229,6 +229,7 @@ namespace WebApplication5.Controllers
                     };
                     animeVM.AnimeGenres.Add(tmp);
                 }
+
                 var anime = new Anime
                 {
                     AnimeName = animeName,
@@ -275,5 +276,25 @@ namespace WebApplication5.Controllers
             else { return View(animeVM); }
 
         }
+
+        public async Task<IActionResult> Delete(string animeName)
+        {
+            var animeDetail = await _animeRepository.GetByNameAsync(animeName);
+            if (animeDetail == null)
+                return View("Error");
+            return View(animeDetail);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteAnime(string animeName)
+        {
+            var animeDetail = await _animeRepository.GetByNameAsync(animeName);
+            if (animeDetail == null)
+                return View("Error");
+
+            _animeRepository.Delete(animeDetail);
+            return RedirectToAction("Index");
+        }
+
     }
 }

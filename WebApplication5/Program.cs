@@ -46,6 +46,10 @@ builder.Services.AddSession();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
        .AddCookie();
 
+builder.Services.Configure<IISServerOptions>(options =>
+{
+    options.MaxRequestBodySize = 100 * 1024 * 1024; // Например, установите максимальный размер в 100 МБ
+});
 
 var app = builder.Build();
 
@@ -56,6 +60,7 @@ if (args.Length == 1 && args[0].ToLower() == "seeddata")
     //Seed.SeedData(app);
 }
 */
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -2,6 +2,7 @@
 using WebApplication5.Data;
 using WebApplication5.Interfaces;
 using WebApplication5.Models;
+using WebApplication5.Repository;
 
 namespace WebApplication5.Controllers
 {
@@ -30,6 +31,16 @@ namespace WebApplication5.Controllers
             return Json("Error");
         }
 
+        //[HttpDelete]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var commentDetail = await _commentRepository.GetCommentById(id);
+            if (commentDetail == null)
+                return View("Error");
+
+            _commentRepository.Delete(commentDetail);
+            return RedirectToAction("About", "Episode", new { animeName = commentDetail.AnimeName, seasonNumber = commentDetail.SeasonNumber, episodeNumber = commentDetail.EpisodeNumber });
+        }
 
     }
 }

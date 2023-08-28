@@ -3,8 +3,11 @@
 
 <input type="hidden" asp-for="AnimeName" />
 <input type="hidden" asp-for="SeasonNumber" />
-<input type="hidden" asp-for="EpisodeNumber" />
-
+<div class="form-group">
+    <label asp-for="EpisodeNumber">EpisodeNumber</label>
+    <input asp-for="EpisodeNumber" required>
+    <span asp-validation-for="EpisodeNumber" class="text-danger"></span>
+</div>
 <div class="form-group">
     <label asp-for="EpisodeSrcUpload">Video File</label>
     <input asp-for="EpisodeSrcUpload" type="file">

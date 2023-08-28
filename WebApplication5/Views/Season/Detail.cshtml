@@ -5,16 +5,31 @@
 }
 
 <link rel="stylesheet" href="~/css/season.css">
+<style>
+    .btn-primary {
+        background-color: #fff777;
+        color: #ff6666;
+        border: none;
+        width: 100%;
+        margin-bottom: 5px;
+    }
 
+        .btn-primary:hover {
+            background-color: #fff111;
+        }
+
+    .fa-star {
+        cursor: pointer;
+    }
+</style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 @{
     var maxSeason = Model.ElementAt(Model.Max(x => x.SeasonNumber - 1));
     var maxEpisode = maxSeason.Episodes.ElementAt(maxSeason.Episodes.Count() - 1);
 }
-
+<h1>@Model.ElementAt(0).AnimeName</h1>
 @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
 {
-    <h1>@Model.ElementAt(0).AnimeName</h1>
     <div class="NewEpisodeContent">
         <p class="comment"><strong>@(maxEpisode.EpisodeNumber + 1) серия выйдет через</strong></p>
         <p class="NewEpisodeText Countdown">2 дня</p>
@@ -23,6 +38,7 @@
         Надо сдлеать ссылку  чтобы мышкой наводился  пост увеличивался
     </div>
 }
+
 <div class="Seasonscontent">
     <div class="sector_border">
         <h2>Смотреть все сезоны и серии</h2>
@@ -34,15 +50,16 @@
             <li id="@season.SeasonNumber" style="margin-bottom: 20px;">
                 <div class="season-post">
 
-                    <figure style="padding: 10px;">
+                    <figure>
                         <a href="@Url.Action("Index", "Episode", new { animeName = season.AnimeName, seasonNumber = season.SeasonNumber })">
                             <img src="@season.SeasonImage" />
                         </a>
-                        <figcaption style="margin-left: 10px;">
-                            @{
+                        <figcaption>
+                            <div class="centered-text">
+                                @{
 
-                                var loggedInUserId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get the user's ID
-                                var userRating = season.Ratings.FirstOrDefault(r => r.AppUserId == loggedInUserId) ?? new Rating()
+                                    var loggedInUserId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get the user's ID
+                                    var userRating = season.Ratings.FirstOrDefault(r => r.AppUserId == loggedInUserId) ?? new Rating()
                 {
                     AnimeName = season.AnimeName,
                     SeasonNumber = season.SeasonNumber,
@@ -50,9 +67,10 @@
                     AppUserId = loggedInUserId
                 };
 
-                                await Html.RenderPartialAsync("_Rating", userRating);
+                                    await Html.RenderPartialAsync("_Rating", userRating);
 
-                            }
+                                }
+                            </div>
                         </figcaption>
 
 
@@ -66,10 +84,34 @@
                             seasonNumber = season.SeasonNumber})">
                                 <i class="fa fa-pencil"></i>
                             </a>
+                            if (Model.Count() > 1)
+                            {
+                                <a type="button" class="btn btn-danger" href="@Url.Action("Delete", "Season", new { animeName = season.AnimeName,
+                            seasonNumber = season.SeasonNumber})">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            }
                         }
-                        <p class="comment">Season Title: @season.SeasonTitle</p>
-                        <p class="comment">Season Number: @season.SeasonNumber</p>
-                        <p class="comment">Episodes: @season.Episodes.Count()</p>
+                        @{
+                            string watchTitle = "";
+                            string watchNumber = "";
+                            if (season.SeasonNumber > 0)
+                            {
+                                watchTitle = "Season";
+                                watchNumber = watchTitle;
+                            }
+                            else
+                            {
+                                watchTitle = "Film";
+                                watchNumber = watchTitle;
+                            }
+                        }
+                        <p class="comment">@watchTitle Title: @season.SeasonTitle</p>
+                        <p class="comment">@watchNumber Number: @Math.Abs(season.SeasonNumber)</p>
+                        @if (season.Episodes.Count(x => x.SeasonNumber > 0) > 0)
+                        {
+                            <p class="comment">Episodes: @season.Episodes.Count(x => x.SeasonNumber > 0)</p>
+                        }
                         @if (season.Ratings.Count > 0)
                         {
                             <p class="comment"><strong>Number votes: @season.Ratings.Count</strong></p>

@@ -93,13 +93,29 @@
 
 <h1>Add new Episode</h1>
 
+
 <div class="form-container">
-    <form method="post" asp-action="Create" enctype="multipart/form-data">
+    <form method="post" asp-action="Create" enctype="multipart/form-data" class="dropzone" id="videoDropzone">
         @{
-            
             await Html.RenderPartialAsync("_CreateEpisode", Model);
         }
         <button type="submit" class="submit-button">Create</button>
     </form>
 </div>
+@*
+@section scripts {
+    <script>
+        Dropzone.options.videoDropzone = {
+            maxFilesize: 80, // Максимальный размер файла в МБ
+            acceptedFiles: ".mp4,.avi,.mov, .mkv", // Разрешенные типы файлов
+            init: function () {
+                this.on("success", function (file, response) {
+                    // Выполняется, когда файл успешно загружен
+                    console.log(response); // Ответ сервера
+                });
+            }
+        };
+    </script>
+}
+*@
 

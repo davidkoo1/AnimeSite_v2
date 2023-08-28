@@ -3,41 +3,6 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    double averageAnimeRating(List<Season> seasons)
-    {
-        if (seasons.Count > 0)
-        {
-            double avgSum = 0;
-            int n = 0;
-            @foreach (var season in seasons)
-            {
-                //avgTmp = season.Ratings.Sum(x => x.Mark) / season.Ratings.Count();
-                if (season.Ratings.Count > 0)
-                    avgSum += season.Ratings.Average(x => x.Mark);
-                else
-                    n++;
-            }
-            if(avgSum > 0)
-                return avgSum / (seasons.Count() - n);
-            return 0;
-        }
-        return 0;
-    }
-    double ratingEditor(ICollection<Anime> animes)
-    {
-        if(animes.Count > 0)
-        {
-            double sum = 0;
-            foreach (var anime in animes)
-                sum += averageAnimeRating(anime.Seasons);
-            return sum / animes.Count();
-        }
 
-        return 0;
-    }
+    await Html.RenderPartialAsync("_DetailEditor", Model);
 }
-
-<h1>@Model.Name</h1>
-<h1>@Model.Description</h1>
-<img src="@Model.Image"/>
-<h1>@ratingEditor(Model.Animes).ToString("0.00")</h1>

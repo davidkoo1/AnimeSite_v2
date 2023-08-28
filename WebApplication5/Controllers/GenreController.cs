@@ -68,5 +68,24 @@ namespace WebApplication5.Controllers
             else { return View(genreVM); }
 
         }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var genreDetail = await _genreRepository.GetGenreByIdAsync(id);
+            if (genreDetail == null)
+                return View("Error");
+            return View(genreDetail);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteGenre(int id)
+        {
+            var genreDetail = await _genreRepository.GetGenreByIdAsync(id);
+            if (genreDetail == null)
+                return View("Error");
+
+            _genreRepository.Delete(genreDetail);
+            return RedirectToAction("Index");
+        }
     }
 }

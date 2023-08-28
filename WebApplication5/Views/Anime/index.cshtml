@@ -8,20 +8,27 @@
 
 <link rel="stylesheet" href="~/css/anime.css">
 @{
-    double averageAnimeRating(ICollection<Season> seasons)
+    double averageAnimeRating(List<Season> seasons)
     {
         double avgSum = 0;
         int n = 0;
-        @foreach (var season in seasons)
+
+        foreach (var season in seasons)
         {
-            //avgTmp = season.Ratings.Sum(x => x.Mark) / season.Ratings.Count();
             if (season.Ratings.Count > 0)
+            {
                 avgSum += season.Ratings.Average(x => x.Mark);
+            }
             else
+            {
                 n++;
+            }
         }
-        return avgSum / (seasons.Count() - n);
+
+        int validSeasonsCount = seasons.Count - n;
+        return validSeasonsCount > 0 ? avgSum / validSeasonsCount : 0;
     }
+
 }
 
 
