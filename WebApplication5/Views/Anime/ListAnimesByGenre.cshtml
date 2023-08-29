@@ -1,0 +1,88 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+
+@using WebApplication5.ViewModels
+@model ListAnimeByGenreViewModel
+@{
+    double averageAnimeRating(List<Season> seasons)
+    {
+        double avgSum = 0;
+        int n = 0;
+
+        foreach (var season in seasons)
+        {
+            if (season.Ratings.Count > 0)
+            {
+                avgSum += season.Ratings.Average(x => x.Mark);
+            }
+            else
+            {
+                n++;
+            }
+        }
+
+        int validSeasonsCount = seasons.Count - n;
+        return validSeasonsCount > 0 ? avgSum / validSeasonsCount : 0;
+    }
+
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<section class="space-sm flush-with-above">
+    <div class="container">
+        @if (Model.NoAnimeWarning == true)
+        {
+            <h1 class="fw-light">
+                There are no running clubs in your area! <a asp-area="" asp-controller="Account"
+                                                            asp-action="Login">Login</a> and create one!
+            </h1>
+        }
+        else
+        {
+            <h1>Аниме по жанру: @Model.Genre</h1>
+        }
+        <div class="grid">
+            @foreach (var anime in Model.Animes)
+            {
+                <a onclick="openModal({url: '/Anime/GetAnime', data: '@anime.AnimeName'})" data-toggle="ajax-modal" data-trigger="Modal">
+                    <div class="content flow">
+
+
+                        <img src="@anime.Anime.TitleImage" alt="Mimimamomu" title="click me!">
+
+                        <p class="title"><strong>@anime.AnimeName</strong></p>
+
+
+                        <div class="rating">
+                            @if (anime.Anime.Seasons.Any())
+                            {
+                                int averageRating = (int)averageAnimeRating(anime.Anime.Seasons);
+                                for (int i = 1; i <= 5; i++)
+                                {
+                                    if (i <= averageRating)
+                                    {
+                                        <span class="fa fa-star checked"></span>
+                                    }
+                                    else
+                                    {
+                                        <span class="fa fa-star"></span>
+                                    }
+                                }
+
+                                <span style="margin-left: 3px;">(@averageAnimeRating(anime.Anime.Seasons).ToString("0.00"))</span>
+
+                            }
+                            else
+                            {
+                                for (int i = 1; i <= 5; i++)
+                                {
+                                    <span class="fa fa-star"></span>
+                                }
+                            }
+                        </div>
+                    </div>
+                </a>
+            }
+
+        </div>
+    </div>
+</section>

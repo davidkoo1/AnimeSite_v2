@@ -94,3 +94,9 @@ R:\the best уроки от лучшего человека\ASP\WebApplication5\
 R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\bin\Debug\net6.0\Castle.Core.dll
 R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Proxies.dll
 R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\bin\Debug\net6.0\CloudinaryDotNet.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\bin\Debug\net6.0\System.Data.SqlClient.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

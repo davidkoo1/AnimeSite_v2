@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
 using System.Security.Claims;
 using WebApplication5.Data;
 using WebApplication5.Interfaces;
@@ -32,7 +33,8 @@ namespace WebApplication5.Controllers
             _wishListRepository = wishListRepository;
             _mediaService = mediaService;
         }
-  
+
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var animes =  await _animeRepository.GetAllAnime();
@@ -51,10 +53,27 @@ namespace WebApplication5.Controllers
             return PartialView("_GetAnime", response);
         }
 
-        public bool IsFavouriteAnime(string animeName, string userId)
+
+        [HttpGet]
+        [Route("OrderAnimeBy/{genre}")]
+        public async Task<IActionResult> ListAnimesByGenre(string genre)
         {
-            return _wishListRepository.ExistsinVishList(animeName, userId);
+            var animes = await _animeRepository.GetAnimesByGenre(genre);
+            var animeVM = new ListAnimeByGenreViewModel()
+            {
+                Animes = animes
+            };
+            if (animes.Count() == 0)
+            {
+                animeVM.NoAnimeWarning = true;
+            }
+            else
+            {
+                animeVM.Genre = genre;
+            }
+            return View(animeVM);
         }
+
 
         public async Task<IActionResult> Create()
         {
@@ -64,24 +83,7 @@ namespace WebApplication5.Controllers
             var genres = await _genreRepository.GetAllGenres();
             ViewBag.Genres = genres;
 
-            /* var anime = new Anime()
-             {
-                 Seasons = new List<Season>()
-                 {
-                     new Season
-                     {
-                         SeasonNumber = 1,
-                         Episodes = new List<Episode>()
-                         {
-                             new Episode
-                             {
-                                 SeasonNumber = 1,
-                                 EpisodeNumber = 1
-                             }
-                         }
-                     }
-                 }
-             };*/
+
             var anime = new CreateAnimeViewModel()
             {
                 SeasonVM = new CreateSeasonViewModel() 
@@ -276,6 +278,7 @@ namespace WebApplication5.Controllers
             else { return View(animeVM); }
 
         }
+
 
         public async Task<IActionResult> Delete(string animeName)
         {

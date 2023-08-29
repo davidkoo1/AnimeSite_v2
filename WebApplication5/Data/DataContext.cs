@@ -11,7 +11,7 @@ namespace WebApplication5.Data
         {
         }
 
-        public DbSet<Anime> Animes { get; set; }
+        public DbSet<Anime> Animes { get; set; } 
         public DbSet<Genre> Genres { get; set; }
         public DbSet<AnimeGenre> AnimeGenres { get; set; }
         public DbSet<Season> Seasons { get; set; }

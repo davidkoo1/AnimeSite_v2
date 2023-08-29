@@ -89,6 +89,10 @@
               "target": "Package",
               "version": "[13.0.3, )"
             },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
+            },
             "dropzone": {
               "target": "Package",
               "version": "[4.3.0, )"

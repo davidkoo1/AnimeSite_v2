@@ -8,6 +8,7 @@ namespace WebApplication5.Repository
     public class AnimeRepository : IAnimeRepository
     {
         private readonly DataContext _dataContext;
+
         public AnimeRepository(DataContext dataContext)
         {
             _dataContext = dataContext;
@@ -41,6 +42,8 @@ namespace WebApplication5.Repository
 
             return await query.ToListAsync();
         }
+
+        public async Task<IEnumerable<AnimeGenre>> GetAnimesByGenre(string genre) => await _dataContext.AnimeGenres.Where(x => x.Genre.Name == genre).ToListAsync();
 
         public async Task<Anime> GetByNameAsync(string AnimeName) => await _dataContext.Animes/*.Include(a => a.Seasons)*/.FirstOrDefaultAsync(i => i.AnimeName == AnimeName);
 

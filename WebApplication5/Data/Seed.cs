@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using WebApplication5.Interfaces;
 using WebApplication5.Models;
 
 namespace WebApplication5.Data

@@ -113,7 +113,9 @@
             <ul class="genre-list">
                 @foreach (var genre in Model.AnimeGenres)
                 {
+                    <a href="@Url.Action("ListAnimesByGenre", "Anime", new { genre = genre.Genre.Name})">
                     <li class="genre-item">@genre.Genre.Name</li>
+                    </a>
                 }
             </ul>
             @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
