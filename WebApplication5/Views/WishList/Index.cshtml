@@ -130,7 +130,7 @@
                 <img class="anime-image" src="@anime.Anime.TitleImage" alt="Mimimamomu" title="click me!">
                 <div class="anime-info">
                     <p class="anime-title">@anime.AnimeName</p>
-                    <p class="anime-title">Seasons | @anime.Anime.Seasons.Count</p>
+                    <p class="anime-title">Seasons | @anime.Anime.Seasons.Count(x => x.SeasonNumber > 0)</p>
                     <p class="anime-title">Episodes | @EpisodeCount(anime.Anime.Seasons, true)</p>
                     @if (EpisodeCount(anime.Anime.Seasons, false) > 0)
                     {

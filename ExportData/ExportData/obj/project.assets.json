@@ -1258,11 +1258,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sverc\\OneDrive\\Рабочий стол\\ExportData\\ExportData\\ExportData.csproj",
+      "projectUniqueName": "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\ExportData\\ExportData\\ExportData.csproj",
       "projectName": "ExportData",
-      "projectPath": "C:\\Users\\sverc\\OneDrive\\Рабочий стол\\ExportData\\ExportData\\ExportData.csproj",
+      "projectPath": "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\ExportData\\ExportData\\ExportData.csproj",
       "packagesPath": "C:\\Users\\sverc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sverc\\OneDrive\\Рабочий стол\\ExportData\\ExportData\\obj\\",
+      "outputPath": "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\ExportData\\ExportData\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\sverc\\AppData\\Roaming\\NuGet\\NuGet.Config",

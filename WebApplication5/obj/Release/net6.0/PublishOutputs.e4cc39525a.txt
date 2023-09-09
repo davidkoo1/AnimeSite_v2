@@ -63,4 +63,8 @@ R:\the best уроки от лучшего человека\ASP\WebApplication5\
 R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\obj\Release\net6.0\PubTmp\Out\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\obj\Release\net6.0\PubTmp\Out\BLL.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\obj\Release\net6.0\PubTmp\Out\Domain.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\obj\Release\net6.0\PubTmp\Out\BLL.pdb
+R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\obj\Release\net6.0\PubTmp\Out\Domain.pdb
 R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\obj\Release\net6.0\PubTmp\Out\WebApplication5.deps.json

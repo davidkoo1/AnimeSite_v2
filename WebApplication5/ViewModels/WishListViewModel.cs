@@ -1,4 +1,4 @@
-﻿using WebApplication5.Models;
+﻿using Domain.Models;
 
 namespace WebApplication5.ViewModels
 {

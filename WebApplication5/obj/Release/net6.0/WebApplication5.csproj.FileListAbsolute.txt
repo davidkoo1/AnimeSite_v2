@@ -94,3 +94,7 @@ R:\the best уроки от лучшего человека\ASP\WebApplication5\
 R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\obj\Release\net6.0\WebApplication5.pdb
 R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\obj\Release\net6.0\WebApplication5.genruntimeconfig.cache
 R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\obj\Release\net6.0\ref\WebApplication5.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\bin\Release\net6.0\BLL.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\bin\Release\net6.0\Domain.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\bin\Release\net6.0\BLL.pdb
+R:\the best уроки от лучшего человека\ASP\WebApplication5\WebApplication5\bin\Release\net6.0\Domain.pdb

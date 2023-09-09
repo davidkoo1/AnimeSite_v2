@@ -11,8 +11,12 @@ namespace ExportData
 {
     public static class DatabaseConnector
     {
+        /*
         public static string NewStr = @"Data Source=DESKTOP-IQ404L4;Initial Catalog=KappaAnimeChellenge;Integrated Security=true;";
         private static string OldStr = @"Data Source=SQL5111.site4now.net;Initial Catalog=db_a9e058_adavid;User Id=db_a9e058_adavid_admin;Password=naruto001";
+        */
+        public static string OldStr = @"Data Source=DESKTOP-IQ404L4;Initial Catalog=KappaAnimeChellenge;Integrated Security=true;";
+        private static string NewStr = @"Data Source=SQL6031.site4now.net;Initial Catalog=db_a9e6db_kappaanimedb;User Id=db_a9e6db_kappaanimedb_admin;Password=Naruto001";
 
         public static List<Editor> GetEditors()
         {
@@ -24,7 +28,7 @@ namespace ExportData
                 SqlCommand command;
                 SqlDataReader dataReader;
                 string GetSqlCommand;
-                GetSqlCommand = "SELECT * FROM [db_a9e058_adavid].[dbo].[Editors]";
+                GetSqlCommand = "SELECT * FROM Editors";
 
                 command = new SqlCommand(GetSqlCommand, connection);
                 dataReader = command.ExecuteReader();
@@ -58,7 +62,7 @@ namespace ExportData
         {
             using (SqlConnection connection = new SqlConnection(NewStr))
             {
-                String query = "INSERT INTO [KappaAnimeChellenge].[dbo].[Editors] VALUES (@Name, @Description, @Image)"; //функцию бы использовать sql которая
+                String query = "INSERT INTO Editors VALUES (@Name, @Description, @Image)"; //функцию бы использовать sql которая
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -84,7 +88,7 @@ namespace ExportData
                 SqlCommand command;
                 SqlDataReader dataReader;
                 string GetSqlCommand;
-                GetSqlCommand = "SELECT * FROM [db_a9e058_adavid].[dbo].[Genres]";
+                GetSqlCommand = "SELECT * FROM Genres";
 
                 command = new SqlCommand(GetSqlCommand, connection);
                 dataReader = command.ExecuteReader();
@@ -110,7 +114,7 @@ namespace ExportData
         {
             using (SqlConnection connection = new SqlConnection(NewStr))
             {
-                String query = "INSERT INTO [KappaAnimeChellenge].[dbo].[Genres] VALUES (@Name)"; //функцию бы использовать sql которая
+                String query = "INSERT INTO Genres VALUES (@Name)"; //функцию бы использовать sql которая
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -134,7 +138,7 @@ namespace ExportData
                 SqlCommand command;
                 SqlDataReader dataReader;
                 string GetSqlCommand;
-                GetSqlCommand = "SELECT * FROM [db_a9e058_adavid].[dbo].[Animes]";
+                GetSqlCommand = "SELECT * FROM Animes";
 
                 command = new SqlCommand(GetSqlCommand, connection);
                 dataReader = command.ExecuteReader();
@@ -169,7 +173,7 @@ namespace ExportData
         {
             using (SqlConnection connection = new SqlConnection(NewStr))
             {
-                String query = "INSERT INTO [KappaAnimeChellenge].[dbo].[Animes] VALUES (@EditorId, @AnimeName, @Description, @TitleImage, @Trailer)"; //функцию бы использовать sql которая
+                String query = "INSERT INTO Animes VALUES (@EditorId, @AnimeName, @Description, @TitleImage, @Trailer)"; //функцию бы использовать sql которая
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -196,7 +200,7 @@ namespace ExportData
                 SqlCommand command;
                 SqlDataReader dataReader;
                 string GetSqlCommand;
-                GetSqlCommand = "SELECT * FROM [db_a9e058_adavid].[dbo].[AnimeGenres]";
+                GetSqlCommand = "SELECT * FROM AnimeGenres";
 
                 command = new SqlCommand(GetSqlCommand, connection);
                 dataReader = command.ExecuteReader();
@@ -222,7 +226,7 @@ namespace ExportData
         {
             using (SqlConnection connection = new SqlConnection(NewStr))
             {
-                String query = "INSERT INTO [KappaAnimeChellenge].[dbo].[AnimeGenres] VALUES (@AnimeName, @GenreId)"; //функцию бы использовать sql которая
+                String query = "INSERT INTO AnimeGenres VALUES (@AnimeName, @GenreId)"; //функцию бы использовать sql которая
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -247,7 +251,7 @@ namespace ExportData
                 SqlCommand command;
                 SqlDataReader dataReader;
                 string GetSqlCommand;
-                GetSqlCommand = "SELECT * FROM [db_a9e058_adavid].[dbo].[Seasons]";
+                GetSqlCommand = "SELECT * FROM Seasons";
 
                 command = new SqlCommand(GetSqlCommand, connection);
                 dataReader = command.ExecuteReader();
@@ -275,7 +279,7 @@ namespace ExportData
         {
             using (SqlConnection connection = new SqlConnection(NewStr))
             {
-                String query = "INSERT INTO [KappaAnimeChellenge].[dbo].[Seasons] VALUES (@AnimeName, @SeasonNumber, @SeasonTitle, @SeasonImage)"; //функцию бы использовать sql которая
+                String query = "INSERT INTO Seasons VALUES (@AnimeName, @SeasonNumber, @SeasonTitle, @SeasonImage)"; //функцию бы использовать sql которая
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -301,7 +305,7 @@ namespace ExportData
                 SqlCommand command;
                 SqlDataReader dataReader;
                 string GetSqlCommand;
-                GetSqlCommand = "SELECT * FROM [db_a9e058_adavid].[dbo].[Episodes]";
+                GetSqlCommand = "SELECT * FROM Episodes";
 
                 command = new SqlCommand(GetSqlCommand, connection);
                 dataReader = command.ExecuteReader();
@@ -330,7 +334,7 @@ namespace ExportData
         {
             using (SqlConnection connection = new SqlConnection(NewStr))
             {
-                String query = "INSERT INTO [KappaAnimeChellenge].[dbo].[Episodes] VALUES (@AnimeName, @SeasonNumber, @EpisodeNumber, @EpisodeSrc, @ReleaseEpisode)"; //функцию бы использовать sql которая
+                String query = "INSERT INTO Episodes VALUES (@AnimeName, @SeasonNumber, @EpisodeNumber, @EpisodeSrc, @ReleaseEpisode)"; //функцию бы использовать sql которая
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -357,7 +361,7 @@ namespace ExportData
                 SqlCommand command;
                 SqlDataReader dataReader;
                 string GetSqlCommand;
-                GetSqlCommand = "SELECT * FROM [db_a9e058_adavid].[dbo].[AspNetUsers]";
+                GetSqlCommand = "SELECT * FROM AspNetUsers";
 
                 command = new SqlCommand(GetSqlCommand, connection);
                 dataReader = command.ExecuteReader();
@@ -398,7 +402,7 @@ namespace ExportData
         {
             using (SqlConnection connection = new SqlConnection(NewStr))
             {
-                String query = "INSERT INTO [KappaAnimeChellenge].[dbo].[AspNetUsers] VALUES " +
+                String query = "INSERT INTO AspNetUsers VALUES " +
                     "(@Id, @ProfileImage, @UserName, @NormalizedUserName, @Email, @NormalizedEmail, @EmailConfirmed, @PasswordHash, @SecurityStamp, @ConcurrencyStamp, @PhoneNumber, @PhoneNumberConfirmed, @TwoFactorEnabled, @LockoutEnd, @LockoutEnabled, @AccessFailedCount)"; //функцию бы использовать sql которая
 
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -437,7 +441,7 @@ namespace ExportData
                 SqlCommand command;
                 SqlDataReader dataReader;
                 string GetSqlCommand;
-                GetSqlCommand = "SELECT * FROM [db_a9e058_adavid].[dbo].[AspNetUserRoles]";
+                GetSqlCommand = "SELECT * FROM AspNetUserRoles";
 
                 command = new SqlCommand(GetSqlCommand, connection);
                 dataReader = command.ExecuteReader();
@@ -463,7 +467,7 @@ namespace ExportData
         {
             using (SqlConnection connection = new SqlConnection(NewStr))
             {
-                String query = "INSERT INTO [KappaAnimeChellenge].[dbo].[AspNetUserRoles] VALUES (@UserId, @RoleId)"; //функцию бы использовать sql которая
+                String query = "INSERT INTO AspNetUserRoles VALUES (@UserId, @RoleId)"; //функцию бы использовать sql которая
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -487,7 +491,7 @@ namespace ExportData
                 SqlCommand command;
                 SqlDataReader dataReader;
                 string GetSqlCommand;
-                GetSqlCommand = "SELECT * FROM [db_a9e058_adavid].[dbo].[AspNetRoles]";
+                GetSqlCommand = "SELECT * FROM AspNetRoles";
 
                 command = new SqlCommand(GetSqlCommand, connection);
                 dataReader = command.ExecuteReader();
@@ -515,7 +519,7 @@ namespace ExportData
         {
             using (SqlConnection connection = new SqlConnection(NewStr))
             {
-                String query = "INSERT INTO [KappaAnimeChellenge].[dbo].[AspNetRoles] VALUES (@Id, @Name, @NormalizedName, @ConcurrencyStamp)"; //функцию бы использовать sql которая
+                String query = "INSERT INTO AspNetRoles VALUES (@Id, @Name, @NormalizedName, @ConcurrencyStamp)"; //функцию бы использовать sql которая
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -541,7 +545,7 @@ namespace ExportData
                 SqlCommand command;
                 SqlDataReader dataReader;
                 string GetSqlCommand;
-                GetSqlCommand = "SELECT * FROM [db_a9e058_adavid].[dbo].[Comments]";
+                GetSqlCommand = "SELECT * FROM Comments";
 
                 command = new SqlCommand(GetSqlCommand, connection);
                 dataReader = command.ExecuteReader();
@@ -572,7 +576,7 @@ namespace ExportData
         {
             using (SqlConnection connection = new SqlConnection(NewStr))
             {
-                String query = "INSERT INTO [KappaAnimeChellenge].[dbo].[Comments] VALUES (@Id, @AnimeName, @SeasonNumber, @EpisodeNumber, @AppUserId, @Message, @Date)"; //функцию бы использовать sql которая
+                String query = "INSERT INTO Comments VALUES (@Id, @AnimeName, @SeasonNumber, @EpisodeNumber, @AppUserId, @Message, @Date)"; //функцию бы использовать sql которая
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -602,7 +606,7 @@ namespace ExportData
                 SqlCommand command;
                 SqlDataReader dataReader;
                 string GetSqlCommand;
-                GetSqlCommand = "SELECT * FROM [db_a9e058_adavid].[dbo].[Ratings]";
+                GetSqlCommand = "SELECT * FROM Ratings";
 
                 command = new SqlCommand(GetSqlCommand, connection);
                 dataReader = command.ExecuteReader();
@@ -630,7 +634,7 @@ namespace ExportData
         {
             using (SqlConnection connection = new SqlConnection(NewStr))
             {
-                String query = "INSERT INTO [KappaAnimeChellenge].[dbo].[Ratings] VALUES (@AnimeName, @SeasonNumber, @AppUserId, @Mark)"; //функцию бы использовать sql которая
+                String query = "INSERT INTO Ratings VALUES (@AnimeName, @SeasonNumber, @AppUserId, @Mark)"; //функцию бы использовать sql которая
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {

@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Components.Forms;
+﻿using BLL.Interfaces;
+using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication5.Data;
-using WebApplication5.Interfaces;
-using WebApplication5.Models;
-using WebApplication5.Repository;
 using WebApplication5.ViewModels;
 
 namespace WebApplication5.Controllers
@@ -24,9 +21,9 @@ namespace WebApplication5.Controllers
             return View(editors);
         }
 
-        public async Task<IActionResult> Detail(int search)
+        public IActionResult Detail(int search)
         {
-            var editor = await _editorRepository.GetEditorById(search);
+            var editor = _editorRepository.GetEditorById(search);
             if (editor != null)
                 return View(editor);
             else
@@ -77,9 +74,9 @@ namespace WebApplication5.Controllers
             return View(editorVM);
         }
 
-        public async Task<IActionResult> Edit(int id)
+        public IActionResult Edit(int id)
         {
-            var editor = await _editorRepository.GetEditorById(id);
+            var editor = _editorRepository.GetEditorById(id);
             if (editor == null)
                 return View("Error");
             var editorVM = new EditEditorViewModel
@@ -143,18 +140,18 @@ namespace WebApplication5.Controllers
 
         }
 
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
-            var editorDetail = await _editorRepository.GetEditorById(id);
+            var editorDetail = _editorRepository.GetEditorById(id);
             if (editorDetail == null)
                 return View("Error");
             return View(editorDetail);
         }
 
         [HttpPost, ActionName("Delete")]
-        public async Task<IActionResult> DeleteEditor(int id)
+        public IActionResult DeleteEditor(int id)
         {
-            var editorDetail = await _editorRepository.GetEditorById(id);
+            var editorDetail = _editorRepository.GetEditorById(id);
             if (editorDetail == null)
                 return View("Error");
 
@@ -162,4 +159,5 @@ namespace WebApplication5.Controllers
             return RedirectToAction("Index");
         }
     }
+
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sGtjXEvx50FvBPjEieDkQVHYWJJJk5X5grpZ7JMvCeY/KEp6SUZAp/WCJ68P7phyH+hvKENlbqR1ATUhhb7Trg==",
+  "dgSpecHash": "GP3NdTqcj52Vz2G9dV/Sqaj4iZsGy0WA7kCVH6HraDFZfchqupq4o0fs/jEXvSYeM6fMNCSOEFgJZqL/rjMFvQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\sverc\\OneDrive\\Рабочий стол\\ExportData\\ExportData\\ExportData.csproj",
+  "projectFilePath": "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\ExportData\\ExportData\\ExportData.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sverc\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\7.0.10\\microsoft.aspnetcore.cryptography.internal.7.0.10.nupkg.sha512",
     "C:\\Users\\sverc\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\7.0.10\\microsoft.aspnetcore.cryptography.keyderivation.7.0.10.nupkg.sha512",

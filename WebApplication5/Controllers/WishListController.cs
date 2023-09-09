@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using WebApplication5.Interfaces;
-using WebApplication5.Models;
-using WebApplication5.Repository;
+﻿using BLL.Interfaces;
+using Domain.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication5.Controllers
 {

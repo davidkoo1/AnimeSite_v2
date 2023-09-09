@@ -1,10 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Net;
-using WebApplication5.Data;
-using WebApplication5.Interfaces;
-using WebApplication5.Models;
-using WebApplication5.Repository;
+﻿using BLL.Interfaces;
+using Domain.Models;
+using Microsoft.AspNetCore.Mvc;
 using WebApplication5.ViewModels;
 
 namespace WebApplication5.Controllers
@@ -22,8 +18,8 @@ namespace WebApplication5.Controllers
         }
         public async Task<IActionResult> Index(string animeName, int seasonNumber)
         {
-            IEnumerable<Episode> episodes = await _episodeRepository.GetAllEpisodesBySeason(animeName, seasonNumber);
-            return View(episodes.OrderBy(x => x.EpisodeNumber));
+            IList<Episode> episodes = await _episodeRepository.GetAllEpisodesBySeason(animeName, seasonNumber);
+            return View(episodes.OrderBy(x => x.EpisodeNumber).ToList()); //Переместить в логику
         }
 
         public async Task<IActionResult> About(string animeName, int seasonNumber, int episodeNumber)
@@ -43,7 +39,7 @@ namespace WebApplication5.Controllers
             };
             return View(episodeVM);
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> Create(CreateEpisodeViewModel episodeVM)
         {
@@ -87,7 +83,7 @@ namespace WebApplication5.Controllers
 
             return View("Create", new { animeName = episodeVM.AnimeName, seasonNumber = episodeVM.SeasonNumber });
         }
-        
+
 
         /*
         [HttpPost]
@@ -135,7 +131,7 @@ namespace WebApplication5.Controllers
 
 
 
-    public async Task<IActionResult> Edit(string animeName, int seasonNumber, int episodeNumber)
+        public async Task<IActionResult> Edit(string animeName, int seasonNumber, int episodeNumber)
         {
             var episode = await _episodeRepository.GetEpisodeAsync(animeName, seasonNumber, episodeNumber);
             if (episode == null)
@@ -219,8 +215,11 @@ namespace WebApplication5.Controllers
                 return View("Error");
 
             _episodeRepository.Delete(episodeDetail);
-            return RedirectToAction("Index", new { animeName = episodeDetail.AnimeName, 
-                seasonNumber = episodeDetail.SeasonNumber });
+            return RedirectToAction("Index", new
+            {
+                animeName = episodeDetail.AnimeName,
+                seasonNumber = episodeDetail.SeasonNumber
+            });
         }
     }
 }

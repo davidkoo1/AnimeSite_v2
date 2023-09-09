@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="IIS Web Application Name" description="" value="adavid-001-site1" tags="IisApp">
+  <parameter name="IIS Web Application Name" description="" value="kappaanime-001-site1" tags="IisApp">
     <parameterEntry kind="ProviderPath" scope="IisApp" match="^R:\\the\ best\ уроки\ от\ лучшего\ человека\\ASP\\WebApplication5\\WebApplication5\\obj\\Release\\net6\.0\\PubTmp\\Out\\$" />
   </parameter>
-  <parameter name="WebApplication5.Data.DataContext" description="" value="Data Source=SQL5111.site4now.net;Initial Catalog=db_a9e058_adavid;User Id=db_a9e058_adavid_admin;Password=naruto001" tags="dbfullsql">
-    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^R:\\the\ best\ уроки\ от\ лучшего\ человека\\ASP\\WebApplication5\\WebApplication5\\obj\\Release\\net6\.0\\PubTmp\\EFSQLScripts\\WebApplication5\.Data\.DataContext\.sql$" />
+  <parameter name="Domain.Data.DataContext" description="" value="Data Source=SQL6031.site4now.net;Initial Catalog=db_a9e6db_kappaanimedb;User Id=db_a9e6db_kappaanimedb_admin;Password=Naruto001" tags="dbfullsql">
+    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^R:\\the\ best\ уроки\ от\ лучшего\ человека\\ASP\\WebApplication5\\WebApplication5\\obj\\Release\\net6\.0\\PubTmp\\EFSQLScripts\\Domain\.Data\.DataContext\.sql$" />
   </parameter>
 </parameters>

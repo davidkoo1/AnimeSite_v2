@@ -81,9 +81,6 @@
           }
         }
       },
-      "dropzone/4.3.0": {
-        "type": "package"
-      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -391,18 +388,6 @@
           "lib/net6.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {
             "related": ".xml"
           }
-        }
-      },
-      "Microsoft.EntityFrameworkCore.Tools/7.0.9": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "7.0.9"
-        },
-        "compile": {
-          "lib/net6.0/_._": {}
-        },
-        "runtime": {
-          "lib/net6.0/_._": {}
         }
       },
       "Microsoft.Extensions.Caching.Abstractions/7.0.0": {
@@ -905,14 +890,6 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "runtime.native.System.Data.SqlClient.sni/4.7.0": {
-        "type": "package",
-        "dependencies": {
-          "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni": "4.4.0",
-          "runtime.win-x64.runtime.native.System.Data.SqlClient.sni": "4.4.0",
-          "runtime.win-x86.runtime.native.System.Data.SqlClient.sni": "4.4.0"
-        }
-      },
       "runtime.native.System.Net.Http/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1031,33 +1008,6 @@
           }
         }
       },
-      "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni/4.4.0": {
-        "type": "package",
-        "runtimeTargets": {
-          "runtimes/win-arm64/native/sni.dll": {
-            "assetType": "native",
-            "rid": "win-arm64"
-          }
-        }
-      },
-      "runtime.win-x64.runtime.native.System.Data.SqlClient.sni/4.4.0": {
-        "type": "package",
-        "runtimeTargets": {
-          "runtimes/win-x64/native/sni.dll": {
-            "assetType": "native",
-            "rid": "win-x64"
-          }
-        }
-      },
-      "runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0": {
-        "type": "package",
-        "runtimeTargets": {
-          "runtimes/win-x86/native/sni.dll": {
-            "assetType": "native",
-            "rid": "win-x86"
-          }
-        }
-      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "compile": {
@@ -1128,34 +1078,6 @@
         "runtime": {
           "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {
             "related": ".xml"
-          }
-        }
-      },
-      "System.Data.SqlClient/4.8.5": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Win32.Registry": "4.7.0",
-          "System.Security.Principal.Windows": "4.7.0",
-          "runtime.native.System.Data.SqlClient.sni": "4.7.0"
-        },
-        "compile": {
-          "ref/netcoreapp2.1/System.Data.SqlClient.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netcoreapp2.1/System.Data.SqlClient.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtimeTargets": {
-          "runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll": {
-            "assetType": "runtime",
-            "rid": "unix"
-          },
-          "runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll": {
-            "assetType": "runtime",
-            "rid": "win"
           }
         }
       },
@@ -2075,6 +1997,39 @@
             "rid": "win"
           }
         }
+      },
+      "BLL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "CloudinaryDotNet": "1.22.0",
+          "Domain": "1.0.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0"
+        },
+        "compile": {
+          "bin/placeholder/BLL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BLL.dll": {}
+        }
+      },
+      "Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.20",
+          "Microsoft.EntityFrameworkCore": "7.0.9",
+          "Microsoft.EntityFrameworkCore.Abstractions": "7.0.10",
+          "Microsoft.EntityFrameworkCore.Analyzers": "7.0.9",
+          "Microsoft.EntityFrameworkCore.Proxies": "7.0.9",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.9"
+        },
+        "compile": {
+          "bin/placeholder/Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Domain.dll": {}
+        }
       }
     }
   },
@@ -2158,25 +2113,6 @@
         "lib/netstandard1.3/CloudinaryDotNet.xml",
         "lib/netstandard2.0/CloudinaryDotNet.dll",
         "lib/netstandard2.0/CloudinaryDotNet.xml"
-      ]
-    },
-    "dropzone/4.3.0": {
-      "sha512": "erwoK0GJ+gDfphtbBOjUkdoe/MBDbTVwd2DvvgNdULgJmZvOHrnbZQJH6GnbMXf9wa463sASZG102ZYbSw+e/Q==",
-      "type": "package",
-      "path": "dropzone/4.3.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "content/Scripts/dropzone/basic.css",
-        "content/Scripts/dropzone/basic.min.css",
-        "content/Scripts/dropzone/dropzone-amd-module.js",
-        "content/Scripts/dropzone/dropzone-amd-module.min.js",
-        "content/Scripts/dropzone/dropzone.css",
-        "content/Scripts/dropzone/dropzone.js",
-        "content/Scripts/dropzone/dropzone.min.css",
-        "content/Scripts/dropzone/dropzone.min.js",
-        "dropzone.4.3.0.nupkg.sha512",
-        "dropzone.nuspec"
       ]
     },
     "Humanizer.Core/2.14.1": {
@@ -2557,31 +2493,6 @@
         "lib/net6.0/Microsoft.EntityFrameworkCore.SqlServer.xml",
         "microsoft.entityframeworkcore.sqlserver.7.0.9.nupkg.sha512",
         "microsoft.entityframeworkcore.sqlserver.nuspec"
-      ]
-    },
-    "Microsoft.EntityFrameworkCore.Tools/7.0.9": {
-      "sha512": "GWOSIe8ltR/mqv2wpRvMhy6ULapdKhZXXpXSGWzG1fRxhYXjSGpe2Pqhxqo46o9RDGlk0WJUXrwyU+N4voPxMw==",
-      "type": "package",
-      "path": "microsoft.entityframeworkcore.tools/7.0.9",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "lib/net6.0/_._",
-        "microsoft.entityframeworkcore.tools.7.0.9.nupkg.sha512",
-        "microsoft.entityframeworkcore.tools.nuspec",
-        "tools/EntityFrameworkCore.PS2.psd1",
-        "tools/EntityFrameworkCore.PS2.psm1",
-        "tools/EntityFrameworkCore.psd1",
-        "tools/EntityFrameworkCore.psm1",
-        "tools/about_EntityFrameworkCore.help.txt",
-        "tools/init.ps1",
-        "tools/net461/any/ef.exe",
-        "tools/net461/win-arm64/ef.exe",
-        "tools/net461/win-x86/ef.exe",
-        "tools/netcoreapp2.0/any/ef.dll",
-        "tools/netcoreapp2.0/any/ef.runtimeconfig.json"
       ]
     },
     "Microsoft.Extensions.Caching.Abstractions/7.0.0": {
@@ -3341,21 +3252,6 @@
         "runtime.native.system.nuspec"
       ]
     },
-    "runtime.native.System.Data.SqlClient.sni/4.7.0": {
-      "sha512": "9kyFSIdN3T0qjDQ2R0HRXYIhS3l5psBzQi6qqhdLz+SzFyEy4sVxNOke+yyYv8Cu8rPER12c3RDjLT8wF3WBYQ==",
-      "type": "package",
-      "path": "runtime.native.system.data.sqlclient.sni/4.7.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
-        "runtime.native.system.data.sqlclient.sni.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
     "runtime.native.System.Net.Http/4.3.0": {
       "sha512": "ZVuZJqnnegJhd2k/PtAbbIcZ3aZeITq3sj06oKfMBSfphW3HDmk/t4ObvbOk/JA/swGR0LNqMksAh/f7gpTROg==",
       "type": "package",
@@ -3508,54 +3404,6 @@
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
-      ]
-    },
-    "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni/4.4.0": {
-      "sha512": "LbrynESTp3bm5O/+jGL8v0Qg5SJlTV08lpIpFesXjF6uGNMWqFnUQbYBJwZTeua6E/Y7FIM1C54Ey1btLWupdg==",
-      "type": "package",
-      "path": "runtime.win-arm64.runtime.native.system.data.sqlclient.sni/4.4.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
-        "runtime.win-arm64.runtime.native.system.data.sqlclient.sni.nuspec",
-        "runtimes/win-arm64/native/sni.dll",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
-    "runtime.win-x64.runtime.native.System.Data.SqlClient.sni/4.4.0": {
-      "sha512": "38ugOfkYJqJoX9g6EYRlZB5U2ZJH51UP8ptxZgdpS07FgOEToV+lS11ouNK2PM12Pr6X/PpT5jK82G3DwH/SxQ==",
-      "type": "package",
-      "path": "runtime.win-x64.runtime.native.system.data.sqlclient.sni/4.4.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
-        "runtime.win-x64.runtime.native.system.data.sqlclient.sni.nuspec",
-        "runtimes/win-x64/native/sni.dll",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
-    "runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0": {
-      "sha512": "YhEdSQUsTx+C8m8Bw7ar5/VesXvCFMItyZF7G1AUY+OM0VPZUOeAVpJ4Wl6fydBGUYZxojTDR3I6Bj/+BPkJNA==",
-      "type": "package",
-      "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
-        "runtime.win-x86.runtime.native.system.data.sqlclient.sni.nuspec",
-        "runtimes/win-x86/native/sni.dll",
-        "useSharedDesignerContext.txt",
-        "version.txt"
       ]
     },
     "System.Buffers/4.5.1": {
@@ -3766,92 +3614,6 @@
         "ref/netstandard2.0/System.Configuration.ConfigurationManager.xml",
         "system.configuration.configurationmanager.5.0.0.nupkg.sha512",
         "system.configuration.configurationmanager.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
-    "System.Data.SqlClient/4.8.5": {
-      "sha512": "fRqxut4lrndPHrXD+ht1XRmCL3obuKldm4XjCRYS9p5f7FSR7shBxAwTkDrpFMsHC9BhNgjjmUtiIjvehn5zkg==",
-      "type": "package",
-      "path": "system.data.sqlclient/4.8.5",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net451/System.Data.SqlClient.dll",
-        "lib/net46/System.Data.SqlClient.dll",
-        "lib/net461/System.Data.SqlClient.dll",
-        "lib/net461/System.Data.SqlClient.xml",
-        "lib/netcoreapp2.1/System.Data.SqlClient.dll",
-        "lib/netcoreapp2.1/System.Data.SqlClient.xml",
-        "lib/netstandard1.2/System.Data.SqlClient.dll",
-        "lib/netstandard1.2/System.Data.SqlClient.xml",
-        "lib/netstandard1.3/System.Data.SqlClient.dll",
-        "lib/netstandard1.3/System.Data.SqlClient.xml",
-        "lib/netstandard2.0/System.Data.SqlClient.dll",
-        "lib/netstandard2.0/System.Data.SqlClient.xml",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net451/System.Data.SqlClient.dll",
-        "ref/net46/System.Data.SqlClient.dll",
-        "ref/net461/System.Data.SqlClient.dll",
-        "ref/net461/System.Data.SqlClient.xml",
-        "ref/netcoreapp2.1/System.Data.SqlClient.dll",
-        "ref/netcoreapp2.1/System.Data.SqlClient.xml",
-        "ref/netstandard1.2/System.Data.SqlClient.dll",
-        "ref/netstandard1.2/System.Data.SqlClient.xml",
-        "ref/netstandard1.2/de/System.Data.SqlClient.xml",
-        "ref/netstandard1.2/es/System.Data.SqlClient.xml",
-        "ref/netstandard1.2/fr/System.Data.SqlClient.xml",
-        "ref/netstandard1.2/it/System.Data.SqlClient.xml",
-        "ref/netstandard1.2/ja/System.Data.SqlClient.xml",
-        "ref/netstandard1.2/ko/System.Data.SqlClient.xml",
-        "ref/netstandard1.2/ru/System.Data.SqlClient.xml",
-        "ref/netstandard1.2/zh-hans/System.Data.SqlClient.xml",
-        "ref/netstandard1.2/zh-hant/System.Data.SqlClient.xml",
-        "ref/netstandard1.3/System.Data.SqlClient.dll",
-        "ref/netstandard1.3/System.Data.SqlClient.xml",
-        "ref/netstandard1.3/de/System.Data.SqlClient.xml",
-        "ref/netstandard1.3/es/System.Data.SqlClient.xml",
-        "ref/netstandard1.3/fr/System.Data.SqlClient.xml",
-        "ref/netstandard1.3/it/System.Data.SqlClient.xml",
-        "ref/netstandard1.3/ja/System.Data.SqlClient.xml",
-        "ref/netstandard1.3/ko/System.Data.SqlClient.xml",
-        "ref/netstandard1.3/ru/System.Data.SqlClient.xml",
-        "ref/netstandard1.3/zh-hans/System.Data.SqlClient.xml",
-        "ref/netstandard1.3/zh-hant/System.Data.SqlClient.xml",
-        "ref/netstandard2.0/System.Data.SqlClient.dll",
-        "ref/netstandard2.0/System.Data.SqlClient.xml",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll",
-        "runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.xml",
-        "runtimes/unix/lib/netstandard1.3/System.Data.SqlClient.dll",
-        "runtimes/unix/lib/netstandard2.0/System.Data.SqlClient.dll",
-        "runtimes/unix/lib/netstandard2.0/System.Data.SqlClient.xml",
-        "runtimes/win/lib/net451/System.Data.SqlClient.dll",
-        "runtimes/win/lib/net46/System.Data.SqlClient.dll",
-        "runtimes/win/lib/net461/System.Data.SqlClient.dll",
-        "runtimes/win/lib/net461/System.Data.SqlClient.xml",
-        "runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll",
-        "runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.xml",
-        "runtimes/win/lib/netstandard1.3/System.Data.SqlClient.dll",
-        "runtimes/win/lib/netstandard2.0/System.Data.SqlClient.dll",
-        "runtimes/win/lib/netstandard2.0/System.Data.SqlClient.xml",
-        "runtimes/win/lib/uap10.0.16299/System.Data.SqlClient.dll",
-        "runtimes/win/lib/uap10.0.16299/System.Data.SqlClient.xml",
-        "system.data.sqlclient.4.8.5.nupkg.sha512",
-        "system.data.sqlclient.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
@@ -6244,23 +6006,24 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "BLL/1.0.0": {
+      "type": "project",
+      "path": "../BLL/BLL.csproj",
+      "msbuildProject": "../BLL/BLL.csproj"
+    },
+    "Domain/1.0.0": {
+      "type": "project",
+      "path": "../Domain/Domain.csproj",
+      "msbuildProject": "../Domain/Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "CloudinaryDotNet >= 1.22.0",
+      "BLL >= 1.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.20",
-      "Microsoft.EntityFrameworkCore >= 7.0.9",
-      "Microsoft.EntityFrameworkCore.Abstractions >= 7.0.10",
-      "Microsoft.EntityFrameworkCore.Analyzers >= 7.0.9",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.9",
-      "Microsoft.EntityFrameworkCore.Proxies >= 7.0.9",
-      "Microsoft.EntityFrameworkCore.Relational >= 7.0.9",
-      "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.9",
-      "Microsoft.EntityFrameworkCore.Tools >= 7.0.9",
-      "Newtonsoft.Json >= 13.0.3",
-      "System.Data.SqlClient >= 4.8.5",
-      "dropzone >= 4.3.0"
+      "Newtonsoft.Json >= 13.0.3"
     ]
   },
   "packageFolders": {
@@ -6290,7 +6053,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\BLL\\BLL.csproj": {
+              "projectPath": "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\BLL\\BLL.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -6303,45 +6070,11 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
-          "CloudinaryDotNet": {
-            "target": "Package",
-            "version": "[1.22.0, )"
-          },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
             "version": "[6.0.20, )"
           },
-          "Microsoft.EntityFrameworkCore": {
-            "target": "Package",
-            "version": "[7.0.9, )"
-          },
-          "Microsoft.EntityFrameworkCore.Abstractions": {
-            "target": "Package",
-            "version": "[7.0.10, )"
-          },
-          "Microsoft.EntityFrameworkCore.Analyzers": {
-            "target": "Package",
-            "version": "[7.0.9, )"
-          },
           "Microsoft.EntityFrameworkCore.Design": {
-            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-            "suppressParent": "All",
-            "target": "Package",
-            "version": "[7.0.9, )"
-          },
-          "Microsoft.EntityFrameworkCore.Proxies": {
-            "target": "Package",
-            "version": "[7.0.9, )"
-          },
-          "Microsoft.EntityFrameworkCore.Relational": {
-            "target": "Package",
-            "version": "[7.0.9, )"
-          },
-          "Microsoft.EntityFrameworkCore.SqlServer": {
-            "target": "Package",
-            "version": "[7.0.9, )"
-          },
-          "Microsoft.EntityFrameworkCore.Tools": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
@@ -6350,14 +6083,6 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.3, )"
-          },
-          "System.Data.SqlClient": {
-            "target": "Package",
-            "version": "[4.8.5, )"
-          },
-          "dropzone": {
-            "target": "Package",
-            "version": "[4.3.0, )"
           }
         },
         "imports": [

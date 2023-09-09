@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Domain.Data;
+using Domain.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication5.Data;
-using WebApplication5.Models;
 using WebApplication5.ViewModels;
 
 namespace WebApplication5.Controllers

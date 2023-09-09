@@ -1,12 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using BLL.Interfaces;
+using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel;
-using System.Security.Claims;
-using WebApplication5.Data;
-using WebApplication5.Interfaces;
-using WebApplication5.Models;
-using WebApplication5.Repository;
 using WebApplication5.ViewModels;
 
 namespace WebApplication5.Controllers
@@ -18,11 +12,11 @@ namespace WebApplication5.Controllers
         private readonly IGenreRepository _genreRepository;
         private readonly IWishListRepository _wishListRepository;
         private readonly IMediaService _mediaService;
-        private readonly IHttpContextAccessor _httpContextAccessor; 
-        public AnimeController(IAnimeRepository animeRepository, 
-            IEditorRepository editorRepository, 
-            IGenreRepository genreRepository, 
-            IHttpContextAccessor httpContextAccessor, 
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public AnimeController(IAnimeRepository animeRepository,
+            IEditorRepository editorRepository,
+            IGenreRepository genreRepository,
+            IHttpContextAccessor httpContextAccessor,
             IWishListRepository wishListRepository,
             IMediaService mediaService)
         {
@@ -37,10 +31,10 @@ namespace WebApplication5.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var animes =  await _animeRepository.GetAllAnime();
+            var animes = await _animeRepository.GetAllAnime();
             return View(animes);
         }
-        
+
         [HttpGet]
         public async Task<IActionResult> GetAnime(string AnimeName, bool isJson)
         {
@@ -86,7 +80,7 @@ namespace WebApplication5.Controllers
 
             var anime = new CreateAnimeViewModel()
             {
-                SeasonVM = new CreateSeasonViewModel() 
+                SeasonVM = new CreateSeasonViewModel()
                 {
                     SeasonNumber = 1,
                     EpisodeVM = new CreateEpisodeViewModel()
@@ -106,7 +100,7 @@ namespace WebApplication5.Controllers
             animeVM.SeasonVM.AnimeName = animeVM.AnimeName;
             animeVM.SeasonVM.EpisodeVM.AnimeName = animeVM.AnimeName;
             animeVM.AnimeGenres = new List<AnimeGenre>();
-            for(int i = 0; i< selectedGenres.Length; i++)
+            for (int i = 0; i < selectedGenres.Length; i++)
             {
                 AnimeGenre tmp = new AnimeGenre()
                 {
@@ -133,7 +127,7 @@ namespace WebApplication5.Controllers
             };
             var episode = new Episode
             {
-                AnimeName= animeVM.AnimeName,
+                AnimeName = animeVM.AnimeName,
                 SeasonNumber = 1,
                 EpisodeNumber = 1,
 
@@ -164,10 +158,10 @@ namespace WebApplication5.Controllers
             {
                 //if (ModelState.IsValid)
                 //{
-                    var result = await _mediaService.AddPhotoAsync(animeVM.TitleImageUpload);
-                    anime.TitleImage = result.Url.ToString();
-                    _animeRepository.Add(anime);
-                    return RedirectToAction("Index");
+                var result = await _mediaService.AddPhotoAsync(animeVM.TitleImageUpload);
+                anime.TitleImage = result.Url.ToString();
+                _animeRepository.Add(anime);
+                return RedirectToAction("Index");
                 //}
                 /*else
                 {
@@ -177,13 +171,13 @@ namespace WebApplication5.Controllers
             }
             else if (animeVM.TitleImageLink != null)
             {
-               /* if (!ModelState.IsValid)
-                {
-                    return View("Create");
-                }
-               */
+                /* if (!ModelState.IsValid)
+                 {
+                     return View("Create");
+                 }
+                */
                 anime.TitleImage = animeVM.TitleImageLink;
-                    _animeRepository.Add(anime);
+                _animeRepository.Add(anime);
                 return RedirectToAction("Index");
             }
 
@@ -213,7 +207,7 @@ namespace WebApplication5.Controllers
             };
             return View(animeVM);
         }
-       
+
         [HttpPost] //сделать чтобы был PK-Anime, чтобы можно было редачить и имя, сделать чтобы у жанров стояла галочка при изменении
         public async Task<IActionResult> Edit(string animeName, EditAnimeViewModel animeVM, int[] selectedGenres)
         {

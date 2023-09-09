@@ -8,18 +8,10 @@
     ".NETCoreApp,Version=v6.0": {
       "WebApplication5/1.0.0": {
         "dependencies": {
-          "CloudinaryDotNet": "1.22.0",
+          "BLL": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.20",
-          "Microsoft.EntityFrameworkCore": "7.0.9",
-          "Microsoft.EntityFrameworkCore.Abstractions": "7.0.10",
-          "Microsoft.EntityFrameworkCore.Analyzers": "7.0.9",
           "Microsoft.EntityFrameworkCore.Design": "7.0.9",
-          "Microsoft.EntityFrameworkCore.Proxies": "7.0.9",
-          "Microsoft.EntityFrameworkCore.Relational": "7.0.9",
-          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.9",
-          "Microsoft.EntityFrameworkCore.Tools": "7.0.9",
-          "Newtonsoft.Json": "13.0.3",
-          "dropzone": "4.3.0"
+          "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
           "WebApplication5.dll": {}
@@ -84,7 +76,6 @@
           }
         }
       },
-      "dropzone/4.3.0": {},
       "Humanizer.Core/2.14.1": {},
       "Microsoft.AspNetCore.Cryptography.Internal/6.0.20": {
         "runtime": {
@@ -273,11 +264,6 @@
             "assemblyVersion": "7.0.9.0",
             "fileVersion": "7.0.923.31909"
           }
-        }
-      },
-      "Microsoft.EntityFrameworkCore.Tools/7.0.9": {
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "7.0.9"
         }
       },
       "Microsoft.Extensions.Caching.Abstractions/7.0.0": {
@@ -1100,6 +1086,29 @@
             "fileVersion": "5.0.20.51904"
           }
         }
+      },
+      "BLL/1.0.0": {
+        "dependencies": {
+          "CloudinaryDotNet": "1.22.0",
+          "Domain": "1.0.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0"
+        },
+        "runtime": {
+          "BLL.dll": {}
+        }
+      },
+      "Domain/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.20",
+          "Microsoft.EntityFrameworkCore": "7.0.9",
+          "Microsoft.EntityFrameworkCore.Abstractions": "7.0.10",
+          "Microsoft.EntityFrameworkCore.Analyzers": "7.0.9",
+          "Microsoft.EntityFrameworkCore.Proxies": "7.0.9",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.9"
+        },
+        "runtime": {
+          "Domain.dll": {}
+        }
       }
     }
   },
@@ -1136,13 +1145,6 @@
       "sha512": "sha512-kdyqW/TDtBebidMp6Nr3CWb6TmpEBKBFFDq1vSnmr/Q2NV09oRZzaMhAhaZTYpN7TVQiYHRhPs9aPzSS6EBCoA==",
       "path": "cloudinarydotnet/1.22.0",
       "hashPath": "cloudinarydotnet.1.22.0.nupkg.sha512"
-    },
-    "dropzone/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-erwoK0GJ+gDfphtbBOjUkdoe/MBDbTVwd2DvvgNdULgJmZvOHrnbZQJH6GnbMXf9wa463sASZG102ZYbSw+e/Q==",
-      "path": "dropzone/4.3.0",
-      "hashPath": "dropzone.4.3.0.nupkg.sha512"
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",
@@ -1269,13 +1271,6 @@
       "sha512": "sha512-19S5BWZBcaShhLWzePi9iOq+meKIgL+dDlS0NQgPOQapu3wb3So3ZL0xgPmmlyq3GLYvXiCmQsK3Yv3vXYaMTg==",
       "path": "microsoft.entityframeworkcore.sqlserver/7.0.9",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.7.0.9.nupkg.sha512"
-    },
-    "Microsoft.EntityFrameworkCore.Tools/7.0.9": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-GWOSIe8ltR/mqv2wpRvMhy6ULapdKhZXXpXSGWzG1fRxhYXjSGpe2Pqhxqo46o9RDGlk0WJUXrwyU+N4voPxMw==",
-      "path": "microsoft.entityframeworkcore.tools/7.0.9",
-      "hashPath": "microsoft.entityframeworkcore.tools.7.0.9.nupkg.sha512"
     },
     "Microsoft.Extensions.Caching.Abstractions/7.0.0": {
       "type": "package",
@@ -1941,6 +1936,16 @@
       "sha512": "sha512-c1ho9WU9ZxMZawML+ssPKZfdnrg/OjR3pe0m9v8230z3acqphwvPJqzAkH54xRYm5ntZHGG1EPP3sux9H3qSPg==",
       "path": "system.windows.extensions/5.0.0",
       "hashPath": "system.windows.extensions.5.0.0.nupkg.sha512"
+    },
+    "BLL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

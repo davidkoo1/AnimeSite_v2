@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using WebApplication5.Data;
-using WebApplication5.Interfaces;
-using WebApplication5.Models;
-using WebApplication5.Repository;
+﻿using BLL.Interfaces;
+using Domain.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication5.Controllers
 {
@@ -16,7 +14,7 @@ namespace WebApplication5.Controllers
         }
         public async Task<IActionResult> GetCommentsByEpisode(string AnimeName, int seasonNumber, int episodeNumber)
         {
-            var comments =  await _commentRepository.GetCommentsByEpisodeAsync(AnimeName, seasonNumber, episodeNumber);
+            var comments = await _commentRepository.GetCommentsByEpisodeAsync(AnimeName, seasonNumber, episodeNumber);
             return PartialView("_Comments", comments);
         }
 
@@ -26,7 +24,7 @@ namespace WebApplication5.Controllers
             if (comment.Message != null)
             {
                 _commentRepository.Add(comment);
-                return RedirectToAction("About", "Episode", new { animeName = comment.AnimeName, seasonNumber = comment.SeasonNumber, episodeNumber = comment.EpisodeNumber});
+                return RedirectToAction("About", "Episode", new { animeName = comment.AnimeName, seasonNumber = comment.SeasonNumber, episodeNumber = comment.EpisodeNumber });
             }
             return Json("Error");
         }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xxaQpzhSibjqFfbrq8d1ia1dBV39hIHQ3uJwE4vt75k=",
+  "Hash": "BaXSECUwSSwbEXyDcCmvso9F6+b7Xq+RzQwzY7hNVbM=",
   "Source": "WebApplication5",
   "BasePath": "_content/WebApplication5",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\anime.css"
+    },
+    {
+      "Identity": "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\WebApplication5\\wwwroot\\css\\Dashboard.css",
+      "SourceId": "WebApplication5",
+      "SourceType": "Discovered",
+      "ContentRoot": "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\WebApplication5\\wwwroot\\",
+      "BasePath": "_content/WebApplication5",
+      "RelativePath": "css/Dashboard.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Dashboard.css"
     },
     {
       "Identity": "R:\\the best уроки от лучшего человека\\ASP\\WebApplication5\\WebApplication5\\wwwroot\\css\\episode.css",

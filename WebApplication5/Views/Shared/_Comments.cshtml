@@ -1,5 +1,7 @@
-﻿<!-- _Comments.cshtml -->
-@model IEnumerable<Comment>
+﻿@using Domain.Models;
+@using Microsoft.AspNetCore.Identity;
+<!-- _Comments.cshtml -->
+@model IList<Comment>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 @if (Model != null && Model.Any())

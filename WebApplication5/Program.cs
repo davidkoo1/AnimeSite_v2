@@ -1,12 +1,12 @@
+using BLL.Helpers;
+using BLL.Interfaces;
+using BLL.Repository;
+using BLL.Services;
+using Domain.Data;
+using Domain.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using WebApplication5.Data;
-using WebApplication5.Helpers;
-using WebApplication5.Interfaces;
-using WebApplication5.Models;
-using WebApplication5.Repository;
-using WebApplication5.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +16,10 @@ builder.Services.AddControllers();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddHttpContextAccessor();
+
+
+
 builder.Services.AddScoped<IAnimeRepository, AnimeRepository>();
 builder.Services.AddScoped<ISeasonRepository, SeasonRepository>();
 builder.Services.AddScoped<IEpisodeRepository, EpisodeRepository>();
@@ -24,6 +28,7 @@ builder.Services.AddScoped<IGenreRepository, GenreRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IRatingRepository, RatingRepository>();
 builder.Services.AddScoped<IWishListRepository, WishListRepository>();
+
 
 builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
 builder.Services.AddScoped<IMediaService, MediaService>();

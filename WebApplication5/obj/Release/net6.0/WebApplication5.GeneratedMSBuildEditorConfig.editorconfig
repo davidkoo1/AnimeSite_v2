@@ -40,6 +40,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Anime/ListAnimesByGenre.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWVcTGlzdEFuaW1lc0J5R2VucmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Anime/_GetAnime.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWVcX0dldEFuaW1lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -100,12 +104,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Home/News.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOZXdzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/News/index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xpbmRleC5jc2h0bWw=
+[R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/News/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [R:/the best уроки от лучшего человека/ASP/WebApplication5/WebApplication5/Views/Season/Create.cshtml]
