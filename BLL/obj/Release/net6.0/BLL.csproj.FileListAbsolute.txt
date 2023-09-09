@@ -1,0 +1,15 @@
+R:\the best уроки от лучшего человека\ASP\WebApplication5\BLL\bin\Release\net6.0\BLL.deps.json
+R:\the best уроки от лучшего человека\ASP\WebApplication5\BLL\bin\Release\net6.0\BLL.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\BLL\bin\Release\net6.0\BLL.pdb
+R:\the best уроки от лучшего человека\ASP\WebApplication5\BLL\bin\Release\net6.0\Domain.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\BLL\bin\Release\net6.0\Domain.pdb
+R:\the best уроки от лучшего человека\ASP\WebApplication5\BLL\obj\Release\net6.0\BLL.csproj.AssemblyReference.cache
+R:\the best уроки от лучшего человека\ASP\WebApplication5\BLL\obj\Release\net6.0\BLL.GeneratedMSBuildEditorConfig.editorconfig
+R:\the best уроки от лучшего человека\ASP\WebApplication5\BLL\obj\Release\net6.0\BLL.AssemblyInfoInputs.cache
+R:\the best уроки от лучшего человека\ASP\WebApplication5\BLL\obj\Release\net6.0\BLL.AssemblyInfo.cs
+R:\the best уроки от лучшего человека\ASP\WebApplication5\BLL\obj\Release\net6.0\BLL.csproj.CoreCompileInputs.cache
+R:\the best уроки от лучшего человека\ASP\WebApplication5\BLL\obj\Release\net6.0\BLL.csproj.CopyComplete
+R:\the best уроки от лучшего человека\ASP\WebApplication5\BLL\obj\Release\net6.0\BLL.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\BLL\obj\Release\net6.0\refint\BLL.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\BLL\obj\Release\net6.0\BLL.pdb
+R:\the best уроки от лучшего человека\ASP\WebApplication5\BLL\obj\Release\net6.0\ref\BLL.dll

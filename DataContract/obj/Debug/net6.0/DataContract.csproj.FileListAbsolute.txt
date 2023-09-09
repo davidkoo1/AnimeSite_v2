@@ -1,0 +1,12 @@
+R:\the best уроки от лучшего человека\ASP\WebApplication5\DataContract\bin\Debug\net6.0\DataContract.deps.json
+R:\the best уроки от лучшего человека\ASP\WebApplication5\DataContract\bin\Debug\net6.0\DataContract.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\DataContract\bin\Debug\net6.0\DataContract.pdb
+R:\the best уроки от лучшего человека\ASP\WebApplication5\DataContract\obj\Debug\net6.0\DataContract.csproj.AssemblyReference.cache
+R:\the best уроки от лучшего человека\ASP\WebApplication5\DataContract\obj\Debug\net6.0\DataContract.GeneratedMSBuildEditorConfig.editorconfig
+R:\the best уроки от лучшего человека\ASP\WebApplication5\DataContract\obj\Debug\net6.0\DataContract.AssemblyInfoInputs.cache
+R:\the best уроки от лучшего человека\ASP\WebApplication5\DataContract\obj\Debug\net6.0\DataContract.AssemblyInfo.cs
+R:\the best уроки от лучшего человека\ASP\WebApplication5\DataContract\obj\Debug\net6.0\DataContract.csproj.CoreCompileInputs.cache
+R:\the best уроки от лучшего человека\ASP\WebApplication5\DataContract\obj\Debug\net6.0\DataContract.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\DataContract\obj\Debug\net6.0\refint\DataContract.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\DataContract\obj\Debug\net6.0\DataContract.pdb
+R:\the best уроки от лучшего человека\ASP\WebApplication5\DataContract\obj\Debug\net6.0\ref\DataContract.dll

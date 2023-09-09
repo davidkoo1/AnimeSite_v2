@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Этот файл используется процессом публикации или упаковки вашего веб-проекта. Можно настроить поведение этого процесса,
+изменив этот файл MSBuild. Подробности см. на странице https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword />
+    <History>True|2023-09-09T20:39:04.7461828Z;False|2023-09-09T23:38:39.2756580+03:00;False|2023-09-09T23:35:40.2774625+03:00;False|2023-09-09T23:34:28.7286880+03:00;True|2023-09-03T20:01:08.5519431+03:00;True|2023-09-03T19:56:34.9081162+03:00;True|2023-09-03T19:26:33.5230095+03:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=SQL6031.site4now.net%3bInitial Catalog=db_a9e6db_kappaanimedb%3bUser Id=db_a9e6db_kappaanimedb_admin%3bPassword=Naruto001</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="Domain.Data.DataContext">
+      <Value>Data Source=SQL6031.site4now.net%3bInitial Catalog=db_a9e6db_kappaanimedb%3bUser Id=db_a9e6db_kappaanimedb_admin%3bPassword=Naruto001</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

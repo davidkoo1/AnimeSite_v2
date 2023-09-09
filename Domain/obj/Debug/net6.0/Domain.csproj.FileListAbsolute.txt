@@ -1,0 +1,14 @@
+R:\the best уроки от лучшего человека\ASP\WebApplication5\Domain\obj\Debug\net6.0\Domain.csproj.AssemblyReference.cache
+R:\the best уроки от лучшего человека\ASP\WebApplication5\Domain\obj\Debug\net6.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+R:\the best уроки от лучшего человека\ASP\WebApplication5\Domain\obj\Debug\net6.0\Domain.AssemblyInfoInputs.cache
+R:\the best уроки от лучшего человека\ASP\WebApplication5\Domain\obj\Debug\net6.0\Domain.AssemblyInfo.cs
+R:\the best уроки от лучшего человека\ASP\WebApplication5\Domain\obj\Debug\net6.0\Domain.csproj.CoreCompileInputs.cache
+R:\the best уроки от лучшего человека\ASP\WebApplication5\Domain\bin\Debug\net6.0\Domain.deps.json
+R:\the best уроки от лучшего человека\ASP\WebApplication5\Domain\bin\Debug\net6.0\Domain.runtimeconfig.json
+R:\the best уроки от лучшего человека\ASP\WebApplication5\Domain\bin\Debug\net6.0\Domain.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\Domain\bin\Debug\net6.0\Domain.pdb
+R:\the best уроки от лучшего человека\ASP\WebApplication5\Domain\obj\Debug\net6.0\Domain.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\Domain\obj\Debug\net6.0\refint\Domain.dll
+R:\the best уроки от лучшего человека\ASP\WebApplication5\Domain\obj\Debug\net6.0\Domain.pdb
+R:\the best уроки от лучшего человека\ASP\WebApplication5\Domain\obj\Debug\net6.0\Domain.genruntimeconfig.cache
+R:\the best уроки от лучшего человека\ASP\WebApplication5\Domain\obj\Debug\net6.0\ref\Domain.dll

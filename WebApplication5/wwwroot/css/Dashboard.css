@@ -1,0 +1,71 @@
+﻿
+/* Добавьте этот CSS в ваш файл стилей */
+body {
+    font-family: Arial, sans-serif;
+}
+a:active, /* активная/посещенная ссылка */
+a:hover, /* при наведении */
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+
+#content-wrap {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin-top: 3%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: linear-gradient(to right, #3498db, #f8f8);
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px; /* Добавляем расстояние между карточками */
+}
+
+.card-icon {
+    color: #fff;
+    padding: 20px;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    display: flex;
+    justify-content: center; /* Выравниваем по горизонтали */
+    align-items: center; /* Выравниваем по вертикали */
+    margin-bottom: 10px; /* Добавляем небольшой отступ снизу */
+}
+
+.card-text {
+    margin-top: 10px;
+}
+
+.no-underline {
+    text-decoration: none;
+    color: #333;
+}
+
+.zoom:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Медиа-запрос для телефона (меньше 992px) */
+/* Для компьютеров (ширина экрана 992px и больше) */
+@media (min-width: 992px) {
+    .col-lg-6 {
+        flex: 0 0 auto;
+        width: 35%;
+    }
+}
+
+
+
